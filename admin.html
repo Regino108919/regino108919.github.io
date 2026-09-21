@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin | RPPE School Website</title>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f3f7fb;
+    color: #173f70;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.admin-header {
+    background: linear-gradient(135deg, #0d4f91, #1769aa);
+    color: white;
+    padding: 25px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.admin-title h1 {
+    margin: 0;
+    font-size: 25px;
+}
+
+.admin-title p {
+    margin: 5px 0 0;
+    font-size: 14px;
+    opacity: .9;
+}
+
+.logout-btn {
+    background: white;
+    color: #0d4f91;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 7px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.logout-btn:hover {
+    background: #eaf3fb;
+}
+
+/* =========================
+   LOGIN
+========================= */
+
+.login-container {
+    max-width: 450px;
+    margin: 70px auto;
+    background: white;
+    padding: 35px;
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0,0,0,.10);
+}
+
+.login-container h2 {
+    margin-top: 0;
+    text-align: center;
+    color: #123f73;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 7px;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cbd7e5;
+    border-radius: 7px;
+    font-size: 15px;
+}
+
+.form-group textarea {
+    min-height: 90px;
+    resize: vertical;
+}
+
+.login-btn,
+.upload-btn {
+    width: 100%;
+    border: none;
+    background: #1769aa;
+    color: white;
+    padding: 13px;
+    border-radius: 7px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.login-btn:hover,
+.upload-btn:hover {
+    background: #0f4f83;
+}
+
+.message {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 7px;
+    display: none;
+}
+
+.error {
+    background: #ffe5e5;
+    color: #a00000;
+}
+
+.success {
+    background: #e3f7e8;
+    color: #146b2f;
+}
+
+/* =========================
+   ADMIN DASHBOARD
+========================= */
+
+.dashboard {
+    max-width: 1100px;
+    margin: 35px auto;
+    padding: 0 20px;
+}
+
+.dashboard-card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,.08);
+}
+
+.dashboard-card h2 {
+    margin-top: 0;
+    color: #123f73;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.file-box {
+    border: 2px dashed #b9c9da;
+    padding: 20px;
+    border-radius: 8px;
+    background: #f8fbfe;
+}
+
+.file-box input {
+    width: 100%;
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 18px;
+    color: #1769aa;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+@media (max-width: 700px) {
+
+    .admin-header {
+        padding: 20px;
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-card {
+        padding: 20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     ADMIN HEADER
+========================= -->
+
+<header class="admin-header">
+
+    <div class="admin-title">
+        <h1>RPPE School Website</h1>
+        <p>Administrator Panel — School Memoranda</p>
+    </div>
+
+    <button id="logoutBtn"
+            class="logout-btn"
+            style="display:none;">
+        Logout
+    </button>
+
+</header>
+
+
+<!-- =========================
+     LOGIN PAGE
+========================= -->
+
+<section id="loginSection" class="login-container">
+
+    <h2>Administrator Login</h2>
+
+    <div class="form-group">
+        <label for="loginEmail">Email Address</label>
+
+        <input
+            type="email"
+            id="loginEmail"
+            placeholder="Enter administrator email"
+        >
+    </div>
+
+
+    <div class="form-group">
+
+        <label for="loginPassword">
+            Password
+        </label>
+
+        <input
+            type="password"
+            id="loginPassword"
+            placeholder="Enter password"
+        >
+
+    </div>
+
+
+    <button
+        id="loginBtn"
+        class="login-btn">
+
+        Login
+
+    </button>
+
+
+    <div
+        id="loginMessage"
+        class="message">
+    </div>
+
+</section>
+
+
+<!-- =========================
+     ADMIN DASHBOARD
+========================= -->
+
+<section
+    id="dashboardSection"
+    class="dashboard"
+    style="display:none;">
+
+    <div class="dashboard-card">
+
+        <h2>Add New School Memorandum</h2>
+
+        <p>
+            Upload an official school memorandum.
+            Once published, it will automatically appear
+            on the public School Memoranda page.
+        </p>
+
+
+        <!-- MEMO NUMBER -->
+
+        <div class="form-group">
+
+            <label for="memoNumber">
+                Memo Number / Series *
+            </label>
+
+            <input
+                type="text"
+                id="memoNumber"
+                placeholder="Example: RPPES SM No. 001-26"
+                required>
+
+        </div>
+
+
+        <!-- TITLE -->
+
+        <div class="form-group">
+
+            <label for="memoTitle">
+                Title *
+            </label>
+
+            <input
+                type="text"
+                id="memoTitle"
+                placeholder="Enter memorandum title"
+                required>
+
+        </div>
+
+
+        <!-- DESCRIPTION -->
+
+        <div class="form-group">
+
+            <label for="memoDescription">
+                Description
+            </label>
+
+            <textarea
+                id="memoDescription"
+                placeholder="Enter a short description of the memorandum">
+            </textarea>
+
+        </div>
+
+
+        <!-- DATE + YEAR -->
+
+        <div class="form-row">
+
+            <div class="form-group">
+
+                <label for="memoDate">
+                    Date Issued *
+                </label>
+
+                <input
+                    type="date"
+                    id="memoDate"
+                    required>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="memoYear">
+                    Year *
+                </label>
+
+                <select id="memoYear">
+
+                    <option value="2026">
+                        2026
+                    </option>
+
+                    <option value="2027">
+                        2027
+                    </option>
+
+                    <option value="2028">
+                        2028
+                    </option>
+
+                    <option value="2029">
+                        2029
+                    </option>
+
+                    <option value="2030">
+                        2030
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <!-- MONTH -->
+
+        <div class="form-group">
+
+            <label for="memoMonth">
+                Month *
+            </label>
+
+            <select id="memoMonth">
+
+                <option value="January">January</option>
+                <option value="February">February</option>
+                <option value="March">March</option>
+                <option value="April">April</option>
+                <option value="May">May</option>
+                <option value="June">June</option>
+                <option value="July">July</option>
+                <option value="August">August</option>
+                <option value="September">September</option>
+                <option value="October">October</option>
+                <option value="November">November</option>
+                <option value="December">December</option>
+
+            </select>
+
+        </div>
+
+
+        <!-- PDF FILE -->
+
+        <div class="form-group">
+
+            <label>
+                Memorandum PDF *
+            </label>
+
+            <div class="file-box">
+
+                <input
+                    type="file"
+                    id="memoFile"
+                    accept="application/pdf"
+                    required>
+
+                <p>
+                    PDF files only. Maximum file size: 50 MB.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- UPLOAD -->
+
+        <button
+            id="uploadBtn"
+            class="upload-btn">
+
+            Upload & Publish Memo
+
+        </button>
+
+
+        <div
+            id="uploadMessage"
+            class="message">
+        </div>
+
+
+        <a
+            href="school-memo.html"
+            class="back-link">
+
+            ← View Public School Memoranda
+
+        </a>
+
+    </div>
+
+</section>
+
+
+<script>
+
+/* =====================================================
+   SUPABASE CONFIGURATION
+   =====================================================
+
+   ILALAGAY NATIN DITO ANG SUPABASE PROJECT URL
+   AT PUBLISHABLE/ANON KEY.
+
+   HUWAG ILAGAY ANG SERVICE_ROLE KEY.
+===================================================== */
+
+const SUPABASE_URL = "https://pmaezkwiumffkrnkedxe.supabase.co";
+
+const SUPABASE_KEY = "sb_publishable_zdFawkn6UgH-RiWCPM1iGw_HmKYvbFS";
+
+
+const { createClient } =
+    supabase;
+
+const db =
+    createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
+
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const loginSection =
+    document.getElementById("loginSection");
+
+const dashboardSection =
+    document.getElementById("dashboardSection");
+
+const logoutBtn =
+    document.getElementById("logoutBtn");
+
+const loginBtn =
+    document.getElementById("loginBtn");
+
+const uploadBtn =
+    document.getElementById("uploadBtn");
+
+const loginMessage =
+    document.getElementById("loginMessage");
+
+const uploadMessage =
+    document.getElementById("uploadMessage");
+
+
+/* =====================================================
+   MESSAGE FUNCTION
+===================================================== */
+
+function showMessage(element, message, type) {
+
+    element.textContent = message;
+
+    element.className =
+        "message " + type;
+
+    element.style.display = "block";
+}
+
+
+/* =====================================================
+   CHECK LOGIN SESSION
+===================================================== */
+
+async function checkSession() {
+
+    const {
+        data: {
+            session
+        }
+    } = await db.auth.getSession();
+
+
+    if (session) {
+
+        showDashboard();
+
+    } else {
+
+        showLogin();
+
+    }
+
+}
+
+
+/* =====================================================
+   SHOW LOGIN
+===================================================== */
+
+function showLogin() {
+
+    loginSection.style.display =
+        "block";
+
+    dashboardSection.style.display =
+        "none";
+
+    logoutBtn.style.display =
+        "none";
+
+}
+
+
+/* =====================================================
+   SHOW DASHBOARD
+===================================================== */
+
+function showDashboard() {
+
+    loginSection.style.display =
+        "none";
+
+    dashboardSection.style.display =
+        "block";
+
+    logoutBtn.style.display =
+        "block";
+
+}
+
+
+/* =====================================================
+   LOGIN
+===================================================== */
+
+loginBtn.addEventListener(
+    "click",
+    async function () {
+
+        const email =
+            document.getElementById(
+                "loginEmail"
+            ).value.trim();
+
+        const password =
+            document.getElementById(
+                "loginPassword"
+            ).value;
+
+
+        if (!email || !password) {
+
+            showMessage(
+                loginMessage,
+                "Please enter your email and password.",
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        loginBtn.disabled = true;
+
+        loginBtn.textContent =
+            "Logging in...";
+
+
+        const {
+            error
+        } = await db.auth.signInWithPassword({
+
+            email: email,
+
+            password: password
+
+        });
+
+
+        if (error) {
+
+            showMessage(
+                loginMessage,
+                error.message,
+                "error"
+            );
+
+            loginBtn.disabled = false;
+
+            loginBtn.textContent =
+                "Login";
+
+            return;
+
+        }
+
+
+        showDashboard();
+
+        loginBtn.disabled = false;
+
+        loginBtn.textContent =
+            "Login";
+
+    }
+);
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+logoutBtn.addEventListener(
+    "click",
+    async function () {
+
+        await db.auth.signOut();
+
+        showLogin();
+
+    }
+);
+
+
+/* =====================================================
+   UPLOAD MEMORANDUM
+===================================================== */
+
+uploadBtn.addEventListener(
+    "click",
+    async function () {
+
+        const memoNumber =
+            document.getElementById(
+                "memoNumber"
+            ).value.trim();
+
+        const title =
+            document.getElementById(
+                "memoTitle"
+            ).value.trim();
+
+        const description =
+            document.getElementById(
+                "memoDescription"
+            ).value.trim();
+
+        const dateIssued =
+            document.getElementById(
+                "memoDate"
+            ).value;
+
+        const year =
+            document.getElementById(
+                "memoYear"
+            ).value;
+
+        const month =
+            document.getElementById(
+                "memoMonth"
+            ).value;
+
+        const fileInput =
+            document.getElementById(
+                "memoFile"
+            );
+
+        const file =
+            fileInput.files[0];
+
+
+        /* REQUIRED FIELDS */
+
+        if (
+            !memoNumber ||
+            !title ||
+            !dateIssued ||
+            !year ||
+            !month ||
+            !file
+        ) {
+
+            showMessage(
+                uploadMessage,
+                "Please complete all required fields and select a PDF file.",
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        /* PDF CHECK */
+
+        if (
+            file.type !==
+            "application/pdf"
+        ) {
+
+            showMessage(
+                uploadMessage,
+                "PDF files only are allowed.",
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        /* FILE SIZE CHECK */
+
+        if (
+            file.size >
+            50 * 1024 * 1024
+        ) {
+
+            showMessage(
+                uploadMessage,
+                "The PDF file must not exceed 50 MB.",
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        uploadBtn.disabled = true;
+
+        uploadBtn.textContent =
+            "Uploading...";
+
+
+        try {
+
+            /*
+             * CREATE UNIQUE FILE NAME
+             */
+
+            const timestamp =
+                Date.now();
+
+            const safeFileName =
+                file.name
+                    .replace(
+                        /[^a-zA-Z0-9._-]/g,
+                        "_"
+                    );
+
+            const filePath =
+                year +
+                "/" +
+                month +
+                "/" +
+                timestamp +
+                "_" +
+                safeFileName;
+
+
+            /*
+             * UPLOAD PDF TO STORAGE
+             */
+
+            const {
+                error:
+                storageError
+            } = await db.storage
+                .from("school-memos")
+                .upload(
+                    filePath,
+                    file,
+                    {
+                        contentType:
+                            "application/pdf",
+
+                        upsert:
+                            false
+                    }
+                );
+
+
+            if (storageError) {
+
+                throw storageError;
+
+            }
+
+
+            /*
+             * GET PUBLIC URL
+             */
+
+            const {
+                data:
+                publicUrlData
+            } = db.storage
+                .from("school-memos")
+                .getPublicUrl(
+                    filePath
+                );
+
+
+            const publicUrl =
+                publicUrlData.publicUrl;
+
+
+            /*
+             * SAVE RECORD TO DATABASE
+             */
+
+            const {
+                error:
+                databaseError
+            } = await db
+                .from("school_documents")
+                .insert({
+
+                    document_type:
+                        "School Memorandum",
+
+                    memo_number:
+                        memoNumber,
+
+                    title:
+                        title,
+
+                    description:
+                        description,
+
+                    date_issued:
+                        dateIssued,
+
+                    school_year:
+    year,
+
+memo_month:
+    month,
+
+file_path:
+    publicUrl,
+
+status:
+    "Published"
+
+                });
+
+
+            if (databaseError) {
+
+                /*
+                 * IF DATABASE SAVE FAILS,
+                 * REMOVE THE UPLOADED FILE.
+                 */
+
+                await db.storage
+                    .from("school-memos")
+                    .remove([
+                        filePath
+                    ]);
+
+                throw databaseError;
+
+            }
+
+
+            /*
+             * SUCCESS
+             */
+
+            showMessage(
+                uploadMessage,
+                "✓ Memorandum uploaded and published successfully!",
+                "success"
+            );
+
+
+            /*
+             * CLEAR FORM
+             */
+
+            document.getElementById(
+                "memoNumber"
+            ).value = "";
+
+            document.getElementById(
+                "memoTitle"
+            ).value = "";
+
+            document.getElementById(
+                "memoDescription"
+            ).value = "";
+
+            document.getElementById(
+                "memoDate"
+            ).value = "";
+
+            document.getElementById(
+                "memoFile"
+            ).value = "";
+
+
+        }
+
+        catch (error) {
+
+            console.error(error);
+
+            showMessage(
+                uploadMessage,
+                "Upload failed: " +
+                error.message,
+                "error"
+            );
+
+        }
+
+        finally {
+
+            uploadBtn.disabled =
+                false;
+
+            uploadBtn.textContent =
+                "Upload & Publish Memo";
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   INITIALIZE
+===================================================== */
+
+checkSession();
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Regino P. Pardilla Elementary School | Mulanay District I</title>
+<link rel="stylesheet" href="style.css">
+
+<style>
+.main-nav{overflow:visible!important}
+.nav-dropdown{position:relative;height:100%;display:flex;align-items:stretch}
+.nav-drop-toggle{height:100%;border:0;background:transparent;color:inherit;font:inherit;padding:0 18px;cursor:pointer;white-space:nowrap}
+.nav-drop-toggle:hover,.nav-drop-toggle:focus-visible{background:rgba(0,0,0,.05);outline:none}
+.drop-arrow{font-size:.75em;margin-left:5px}
+.nav-dropdown-menu{display:none;position:absolute;top:100%;left:0;min-width:245px;background:#fff;border:1px solid #dbe3ee;box-shadow:0 8px 20px rgba(0,0,0,.14);z-index:9999}
+.nav-dropdown-menu a{display:block!important;padding:12px 16px!important;color:#163a6b!important;background:#fff!important;text-decoration:none;white-space:nowrap;border-bottom:1px solid #eef2f7}
+.nav-dropdown-menu a:hover,.nav-dropdown-menu a:focus{background:#edf5ff!important;color:#0b55a0!important}
+.nav-dropdown:hover .nav-dropdown-menu,.nav-dropdown.open .nav-dropdown-menu{display:block}
+@media(max-width:900px){.nav-dropdown{width:100%}.nav-drop-toggle{width:100%;text-align:left;padding:12px 16px}.nav-dropdown-menu{position:static;width:100%;min-width:0;box-shadow:none}}
+</style>
+
+<style>
+/* Navigation dropdowns: same typography as every main navigation item */
+.main-nav > a,
+.main-nav .nav-drop-toggle {
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: #173b70 !important;
+  line-height: normal;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.main-nav .nav-dropdown {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  height: auto;
+}
+.main-nav .nav-drop-toggle {
+  border: 0;
+  border-right: 1px solid #edf1f6;
+  background: #fff;
+  padding: 16px 14px !important;
+  cursor: pointer;
+  min-height: 49px;
+}
+.main-nav .nav-drop-toggle:hover,
+.main-nav .nav-dropdown.open .nav-drop-toggle {
+  background: #eaf2fb;
+  color: #0b5db7 !important;
+}
+.main-nav .nav-dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 245px;
+  padding: 0;
+  margin: 0;
+  background: #fff;
+  border: 1px solid #dbe3ee;
+  box-shadow: 0 8px 20px rgba(0,0,0,.14);
+  z-index: 9999;
+}
+.main-nav .nav-dropdown:hover .nav-dropdown-menu,
+.main-nav .nav-dropdown.open .nav-dropdown-menu {
+  display: block;
+}
+.main-nav .nav-dropdown-menu a {
+  display: block !important;
+  padding: 12px 16px !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  color: #173b70 !important;
+  background: #fff !important;
+  border-bottom: 1px solid #eef2f7;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.main-nav .nav-dropdown-menu a:hover {
+  background: #edf5ff !important;
+  color: #0b55a0 !important;
+}
+@media (max-width: 900px) {
+  .main-nav .nav-dropdown-menu {
+    position: absolute;
+  }
+  .main-nav .nav-drop-toggle {
+    padding: 14px 11px !important;
+  }
+}
+</style>
+
+</head>
+<body>
+<!-- Client Satisfaction Measurement popup -->
+<div class="csm-overlay" id="csmOverlay" role="dialog" aria-modal="true" aria-labelledby="csmTitle" aria-hidden="false">
+  <div class="csm-modal">
+    <button type="button" class="csm-close" id="csmClose" aria-label="Close survey" onclick="document.getElementById('csmOverlay').classList.add('csm-hidden'); document.body.classList.remove('csm-open'); return false;">×</button>
+    <div class="csm-modal-head">
+      <div class="modal-logos"><img src="assets/deped-logo.png"><img src="assets/bagong-pilipinas.png"><img src="assets/deped-quezon.png"><img src="assets/school-logo.png"></div>
+      <div class="modal-title">Client Satisfaction Measurement (CSM)</div>
+    </div>
+    <div class="csm-body">
+      <div class="wait-row"><span class="wait">WAIT!</span><span>BAGO KA UMALIS…</span></div>
+      <h2 id="csmTitle">PAKI-SAGUTAN ANG AMING<br><b>CLIENT SATISFACTION MEASUREMENT (CSM) FORM</b></h2>
+      <p>Ang inyong feedback ay mahalaga upang mas mapabuti pa ang aming mga serbisyo para sa lahat.</p>
+      <div class="survey-actions"><div class="qr"><img src="assets/csm-qr.png"><b>SCAN HERE</b></div><a href="https://bit.ly/DepEdQuezonCSM" target="_blank" rel="noopener" class="survey-btn" onclick="document.getElementById('csmOverlay').classList.add('csm-hidden'); document.body.classList.remove('csm-open');">OPEN CSM FORM ↗</a></div>
+    </div>
+  </div>
+</div>
+
+<header>
+  <div class="institutional-head">
+    <div class="head-logos left-logos">
+      <img class="deped" src="assets/deped-logo.png" alt="Department of Education">
+      <img class="bp" src="assets/bagong-pilipinas.png" alt="Bagong Pilipinas">
+      <img class="quezon" src="assets/deped-quezon.png" alt="DepEd Quezon">
+    </div>
+    <div class="official-title">
+      <div>Republic of the Philippines</div>
+      <h1>Department of Education</h1>
+      <div>REGION IV-A CALABARZON</div>
+      <div>Schools Division Office of Quezon Province</div>
+      <div class="district">Mulanay District I</div>
+      <strong>REGINO P. PARDILLA ELEMENTARY SCHOOL</strong>
+    </div>
+    <div class="head-right">
+      <img src="assets/school-logo.png" alt="Regino P. Pardilla Elementary School Logo">
+      <div class="clock-box"><span id="time">00:00:00 AM</span><small id="date">Monday, September 21, 2026</small></div>
+    </div>
+  </div>
+
+  <nav class="main-nav">
+    <a class="active" href="#home">Home</a>
+    <div class="nav-dropdown">
+      <button type="button" class="nav-drop-toggle" aria-expanded="false">About Us <span class="drop-arrow">▾</span></button>
+      <div class="nav-dropdown-menu">
+  <a href="#history-profile">History and Profile</a>
+  <a href="#vision-mission">Vision, Mission and Core Values</a>
+  <a href="#mandate">Mandate</a>
+  <a href="#organization">Organization Structure</a>
+  <a href="#contact">Contact Us</a>
+  <a href="#citizens-charter">Citizen's Charter</a>
+  <a href="#data-privacy">Data Privacy Notice</a>
+</div>
+</div>
+    <a href="#programs">Programs &amp; Projects</a>
+    <a href="#data">School Data</a>
+    <div class="nav-dropdown">
+
+    <button type="button"
+            class="nav-drop-toggle"
+            aria-expanded="false">
+        Resources
+        <span class="drop-arrow">▼</span>
+    </button>
+
+    <div class="nav-dropdown-menu">
+
+        <a href="school-memo.html">
+            School Memo
+        </a>
+
+        <a href="#office-memo">
+            Office Memo
+        </a>
+
+        <a href="#advisories">
+            Advisories
+        </a>
+
+        <a href="#school-forms">
+            School Forms &amp; Template
+        </a>
+
+        <a href="#dts">
+            Document Tracking System
+        </a>
+
+    </div>
+
+</div>
+    <a href="#news">News</a>
+    <a href="#calendar">Calendar</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#contact">Contact</a>
+    <div class="nav-search"><input type="search" placeholder="Search" aria-label="Search"><button aria-label="Search">⌕</button></div>
+  </nav>
+</header>
+
+<main id="home">
+  <section class="hero-slider">
+    <div class="slides">
+      <article class="slide active-slide">
+        <div class="slide-copy"><span class="eyebrow">WELCOME TO OUR OFFICIAL SCHOOL WEBSITE</span><h2>Regino P. Pardilla<br><b>Elementary School</b></h2><p>Mulanay District I • Schools Division Office of Quezon Province</p><a href="#about" class="hero-btn">EXPLORE OUR SCHOOL →</a></div>
+        <div class="slide-art"><div class="sun"></div><div class="ribbon blue"></div><div class="ribbon gold"></div><div class="school-card"><img src="assets/school-logo.png"><b>RPPE</b><span>LEARN • SERVE • LEAD</span></div></div>
+      </article>
+      <article class="slide">
+        <div class="slide-copy"><span class="eyebrow">PROGRAMS &amp; PROJECTS</span><h2>Learning Recovery<br><b>For Every Learner</b></h2><p>Discover our ARAL, Reading, Numeracy, SPED and other school-based initiatives.</p><a href="#programs" class="hero-btn">VIEW PROGRAMS →</a></div>
+        <div class="slide-art second"><div class="orb"></div><div class="book-shape b1"></div><div class="book-shape b2"></div><div class="number">123</div></div>
+      </article>
+      <article class="slide">
+        <div class="slide-copy"><span class="eyebrow">PUBLIC INFORMATION</span><h2>School Documents<br><b>News &amp; Announcements</b></h2><p>Access official issuances, forms, reports, activities and school updates.</p><a href="#resources" class="hero-btn">VIEW RESOURCES →</a></div>
+        <div class="slide-art third"><div class="doc-stack"><div>MEMO</div><div>FORMS</div><div>REPORTS</div></div><div class="seal">RPPE</div></div>
+      </article>
+    </div>
+    <button class="slider-arrow prev" aria-label="Previous slide">‹</button><button class="slider-arrow next" aria-label="Next slide">›</button>
+    <div class="dots"><button class="dot active" data-slide="0"></button><button class="dot" data-slide="1"></button><button class="dot" data-slide="2"></button></div>
+  </section>
+
+  <section class="quick-links">
+    <a href="#about"><span>▣</span><b>About Us</b><small>School profile, history and personnel</small></a>
+    <a href="#programs"><span>◆</span><b>Programs &amp; Projects</b><small>ARAL • Reading • Numeracy • SPED</small></a>
+    <a href="#data"><span>▤</span><b>School Data</b><small>Enrollment and public school information</small></a>
+    <a href="#resources"><span>▣</span><b>Resources</b><small>School Memo • Forms • Advisories</small></a>
+    <a href="#news"><span>◉</span><b>News</b><small>Announcements and school updates</small></a>
+    <a href="#calendar"><span>◫</span><b>Calendar</b><small>Activities and important dates</small></a>
+  </section>
+
+  <section id="about" class="content-section">
+    <div class="section-heading"><span>ABOUT THE SCHOOL</span><h2>Regino P. Pardilla Elementary School</h2><p>Official school information and public-facing resources.</p></div>
+    <div class="info-grid"><div class="info-card large"><span class="card-label">SCHOOL PROFILE</span><h3>A School Community Committed to Learning</h3><p>This area will contain the official school profile, history, vision, mission, core values, school administration and personnel information.</p><a href="#">View School Profile →</a></div><div class="info-card stat"><b>108919</b><span>School ID</span></div><div class="info-card stat"><b>2026–2027</b><span>School Year</span></div></div>
+  </section>
+
+  <section id="about-overview" class="content-section">
+    <div class="section-heading"><span>ABOUT US</span><h2>Overview</h2><p>General information about Regino P. Pardilla Elementary School.</p></div>
+    <div class="info-card large"><h3>School Overview</h3><p>This page will contain the official school overview, history, vision, mission, core values, programs, and other public school information.</p></div>
+  </section>
+
+  <section id="organization" class="content-section">
+    <div class="section-heading"><span>ABOUT US</span><h2>Organization Structure</h2><p>School administration, teaching and non-teaching personnel.</p></div>
+    <div class="info-card large"><h3>School Organization</h3><p>The official school organizational structure and personnel directory will be presented here.</p></div>
+  </section>
+
+  <section id="citizens-charter" class="content-section">
+    <div class="section-heading"><span>ABOUT US</span><h2>Citizen's Charter</h2><p>Information on school services, procedures, requirements, and service standards.</p></div>
+    <div class="info-card large"><h3>Citizen's Charter</h3><p>The school's approved Citizen's Charter will be posted here for public reference.</p></div>
+  </section>
+
+  <section id="data-privacy" class="content-section">
+    <div class="section-heading"><span>ABOUT US</span><h2>Data Privacy Notice</h2><p>Information on the school's handling and protection of personal data.</p></div>
+    <div class="info-card large"><h3>Data Privacy Notice</h3><p>The official school Data Privacy Notice will be posted here. Only appropriate public information will be displayed on this website.</p></div>
+  </section>
+
+  <section id="programs" class="band-section"><div class="section-heading"><span>PROGRAMS &amp; PROJECTS</span><h2>School Initiatives</h2><p>Programs supporting learning recovery, learner development and inclusive education.</p></div><div class="program-grid"><article><b>01</b><h3>ARAL Program</h3><p>Academic Recovery and Accessible Learning.</p></article><article><b>02</b><h3>Reading</h3><p>Reading intervention and literacy support.</p></article><article><b>03</b><h3>Numeracy</h3><p>Numeracy development and learning recovery.</p></article><article><b>04</b><h3>SPED</h3><p>Support for learners with diverse needs.</p></article></div></section>
+
+  <section id="data" class="content-section"><div class="section-heading"><span>SCHOOL DATA</span><h2>School Data &amp; Public Information</h2><p>Selected school information will be presented here for public access while protecting confidential learner-level data.</p></div><div class="data-grid"><article><h3>Enrollment</h3><p>Enrollment and access information.</p><a href="#">View Data →</a></article><article><h3>Reading</h3><p>Reading assessment and intervention information.</p><a href="#">View Data →</a></article><article><h3>Numeracy</h3><p>Numeracy assessment information.</p><a href="#">View Data →</a></article><article><h3>School Performance</h3><p>MPS and other public indicators.</p><a href="#">View Data →</a></article></div></section>
+
+  <section id="resources" class="band-section">
+    <div class="section-heading"><span>RESOURCES</span><h2>School Resources &amp; Official Documents</h2><p>Access school memoranda, office memoranda, advisories, forms, templates, and the Document Tracking System.</p></div>
+    <div class="data-grid">
+      <article id="school-memo"><div class="icon">▤</div><h3>School Memo</h3><p>Official school memoranda and notices.</p><a href="school-memo.html">Open →</a></article>
+      <article id="office-memo"><div class="icon">▣</div><h3>Office Memo</h3><p>Official office memoranda and internal issuances.</p><a href="#office-memo">Open →</a></article>
+      <article id="advisories"><div class="icon">◫</div><h3>Advisories</h3><p>Important announcements and advisories.</p><a href="#advisories">Open →</a></article>
+      <article id="school-forms"><div class="icon">□</div><h3>School Forms &amp; Template</h3><p>Frequently used school forms and templates.</p><a href="#school-forms">Open →</a></article>
+      <article id="dts-resource-card"><div class="icon">⌁</div><h3>Document Tracking System</h3><p>Secure submission, routing, review, approval, and tracking of school documents.</p><a href="#dts">Open DTS →</a></article>
+    </div>
+  </section>
+
+
+  <section id="news" class="band-section"><div class="section-heading"><span>NEWS &amp; ANNOUNCEMENTS</span><h2>What's Happening</h2></div><div class="news-grid"><article><small>21 SEPTEMBER 2026</small><h3>Welcome to the Official RPPE Website</h3><p>This section will feature official school news, announcements and activities.</p></article><article><small>SY 2026–2027</small><h3>School Activities</h3><p>Upcoming events, meetings and school programs.</p></article><article><small>LATEST</small><h3>School Highlights</h3><p>Accomplishments, projects and learner activities.</p></article></div></section>
+
+  <section id="calendar" class="band-section"><div class="section-heading"><span>SCHOOL CALENDAR</span><h2>Upcoming Activities</h2><p>Important school activities, meetings and events for SY 2026–2027.</p></div><div class="calendar-grid"><article><small>SEPTEMBER 2026</small><h3>National Teachers’ Month</h3><p>School-based activities and appreciation initiatives.</p></article><article><small>SY 2026–2027</small><h3>School Activities</h3><p>Meetings, programs, assessments and other school events.</p></article><article><small>UPDATES</small><h3>View School Calendar</h3><p>The official calendar section will be updated with school activities and schedules.</p></article></div></section>
+
+  <section id="gallery" class="content-section gallery-section"><div class="section-heading"><span>GALLERY</span><h2>School Life</h2><p>School activity and campus photos will be displayed here.</p></div><div class="gallery-placeholder"><span>PHOTO GALLERY</span><b>Regino P. Pardilla Elementary School</b><small>School photos and activity highlights</small></div></section>
+
+  <section id="dts" class="dts-section"><div><span>SECURE SCHOOL SYSTEM</span><h2>Document Tracking System</h2><p>For authorized personnel to submit, route, review, approve, release and track school documents with an audit trail.</p></div><a href="#" class="dts-button">LOGIN TO DTS ↗</a></section>
+</main>
+
+<footer id="contact"><div class="footer-brand"><img src="assets/school-logo.png"><div><b>REGINO P. PARDILLA ELEMENTARY SCHOOL</b><p>Mulanay District I<br>Schools Division Office of Quezon Province</p></div></div><div><b>CONTACT</b><p>Centro II, Brgy. Ajos<br>Mulanay, Quezon<br>108919@deped.gov.ph</p></div><div><b>QUICK LINKS</b><p><a href="#about">About Us</a><br><a href="#programs">Programs &amp; Projects</a><br><a href="#data">School Data</a><br><a href="#resources">Resources</a><br><a href="#news">News</a><br><a href="#calendar">Calendar</a></p></div><div class="footer-bottom">© 2026 Regino P. Pardilla Elementary School • Official School Website</div></footer>
+<script src="script.js"></script>
+<script>
+(function(){
+  function initDropdowns(){
+    document.querySelectorAll('.main-nav .nav-dropdown').forEach(function(dropdown){
+      var toggle=dropdown.querySelector('.nav-drop-toggle');
+      if(!toggle) return;
+      toggle.addEventListener('click',function(e){
+        e.preventDefault(); e.stopPropagation();
+        document.querySelectorAll('.main-nav .nav-dropdown').forEach(function(other){
+          if(other!==dropdown){
+            other.classList.remove('open');
+            var ot=other.querySelector('.nav-drop-toggle');
+            if(ot) ot.setAttribute('aria-expanded','false');
+          }
+        });
+        var open=dropdown.classList.toggle('open');
+        toggle.setAttribute('aria-expanded',open?'true':'false');
+      });
+      dropdown.querySelectorAll('.nav-dropdown-menu a').forEach(function(link){
+        link.addEventListener('click',function(){
+          dropdown.classList.remove('open');
+          toggle.setAttribute('aria-expanded','false');
+        });
+      });
+    });
+    document.addEventListener('click',function(e){
+      if(!e.target.closest('.main-nav .nav-dropdown')){
+        document.querySelectorAll('.main-nav .nav-dropdown').forEach(function(dropdown){
+          dropdown.classList.remove('open');
+          var t=dropdown.querySelector('.nav-drop-toggle');
+          if(t) t.setAttribute('aria-expanded','false');
+        });
+      }
+    });
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',initDropdowns);
+  else initDropdowns();
+})();
+</script>
+</body>
+</html>

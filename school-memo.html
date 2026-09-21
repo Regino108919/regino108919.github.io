@@ -1,0 +1,1607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Memoranda | Regino P. Pardilla Elementary School</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* =========================================
+           SCHOOL MEMORANDA PAGE
+           ========================================= */
+
+        .memo-page {
+            background: #f5f8fc;
+            min-height: 70vh;
+            padding: 45px 6%;
+        }
+
+        .memo-page-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .memo-page-header .memo-kicker {
+            display: inline-block;
+            color: #1769aa;
+            font-weight: 800;
+            font-size: 14px;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .memo-page-header h1 {
+            margin: 0 0 10px;
+            color: #123f73;
+            font-size: 38px;
+        }
+
+        .memo-page-header p {
+            margin: 0 auto;
+            max-width: 800px;
+            color: #5d7085;
+            font-size: 16px;
+        }
+
+        .memo-panel {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 28px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            border: 1px solid #e2eaf2;
+        }
+
+        .memo-tools {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 25px;
+            align-items: end;
+        }
+
+        .memo-search-box {
+            flex: 1 1 380px;
+        }
+
+        .memo-search-box label,
+        .memo-filter label {
+            display: block;
+            font-weight: 700;
+            color: #173f70;
+            margin-bottom: 7px;
+        }
+
+        .memo-search-box input,
+        .memo-filter select {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 12px 14px;
+            border: 1px solid #ccd8e5;
+            border-radius: 8px;
+            font-size: 15px;
+            background: #fff;
+        }
+
+        .memo-filter {
+            flex: 0 1 220px;
+        }
+
+        .memo-search-button {
+            padding: 12px 22px;
+            border: none;
+            border-radius: 8px;
+            background: #1769aa;
+            color: white;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .memo-search-button:hover {
+            background: #0f4f83;
+        }
+
+        .memo-record-count {
+            margin-bottom: 15px;
+            color: #40566d;
+        }
+
+        .memo-table-wrap {
+            overflow-x: auto;
+        }
+
+        .memo-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 800px;
+        }
+
+        .memo-table th {
+            background: #123f73;
+            color: #ffffff;
+            padding: 14px;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        .memo-table td {
+            padding: 16px 14px;
+            border-bottom: 1px solid #e1e8ef;
+            vertical-align: top;
+            color: #34495e;
+        }
+
+        .memo-table tr:hover {
+            background: #f4f8fc;
+        }
+
+        .memo-number {
+            font-weight: 800;
+            color: #123f73;
+        }
+
+        .memo-title {
+            font-weight: 700;
+            color: #173f70;
+        }
+
+        .memo-description {
+            margin-top: 5px;
+            color: #718096;
+            font-size: 14px;
+        }
+
+        .memo-view-button {
+            display: inline-block;
+            padding: 9px 15px;
+            background: #1769aa;
+            color: white !important;
+            text-decoration: none;
+            border-radius: 7px;
+            font-weight: 700;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+
+        .memo-view-button:hover {
+            background: #0f4f83;
+        }
+
+        .memo-empty {
+            text-align: center;
+            padding: 35px;
+            color: #73849a;
+            display: none;
+        }
+
+        @media (max-width: 700px) {
+
+            .memo-page {
+                padding: 30px 4%;
+            }
+
+            .memo-panel {
+                padding: 18px;
+            }
+
+            .memo-page-header h1 {
+                font-size: 30px;
+            }
+
+            .memo-tools {
+                display: block;
+            }
+
+            .memo-search-box,
+            .memo-filter {
+                width: 100%;
+                margin-bottom: 15px;
+            }
+
+            .memo-search-button {
+                width: 100%;
+            }
+        }
+/* =========================================
+   MATCH INDEX.HTML NAVIGATION
+   ========================================= */
+
+.main-nav {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    background: #ffffff;
+    border-bottom: 1px solid #d9e2ec;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    position: relative;
+    z-index: 1000;
+}
+
+.main-nav > a,
+.main-nav .nav-drop-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 54px;
+    padding: 0 16px;
+    border: 0;
+    border-left: 1px solid #edf1f5;
+    background: #ffffff;
+    color: #123f73;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.main-nav > a:hover,
+.main-nav .nav-drop-toggle:hover {
+    background: #f4f8fc;
+    color: #1769aa;
+}
+
+.main-nav .nav-dropdown {
+    position: relative;
+    display: flex;
+    align-items: stretch;
+}
+
+.main-nav .nav-drop-toggle {
+    gap: 6px;
+    white-space: nowrap;
+}
+
+.main-nav .drop-arrow {
+    font-size: 10px;
+    transition: transform 0.2s ease;
+}
+
+/* HIDE DROPDOWN BY DEFAULT */
+.main-nav .nav-dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 230px;
+    background: #ffffff;
+    border: 1px solid #d9e2ec;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+    z-index: 2000;
+    padding: 6px 0;
+}
+
+/* SHOW ONLY WHEN OPEN */
+.main-nav .nav-dropdown.open .nav-dropdown-menu {
+    display: block;
+}
+
+.main-nav .nav-dropdown-menu a {
+    display: block;
+    padding: 10px 16px;
+    color: #123f73;
+    background: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.main-nav .nav-dropdown-menu a:hover {
+    background: #f1f6fb;
+    color: #1769aa;
+}
+
+.main-nav .nav-dropdown.open .drop-arrow {
+    transform: rotate(180deg);
+}
+    /* =========================================
+   DROPDOWN FIX - SCHOOL MEMO PAGE
+   ========================================= */
+
+.main-nav .nav-dropdown {
+    position: relative !important;
+    z-index: 3000 !important;
+}
+
+.main-nav .nav-dropdown.open {
+    z-index: 4000 !important;
+}
+
+.main-nav .nav-dropdown-menu {
+    display: none !important;
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    min-width: 230px !important;
+    background: #ffffff !important;
+    border: 1px solid #d9e2ec !important;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.15) !important;
+    z-index: 5000 !important;
+    padding: 6px 0 !important;
+}
+
+.main-nav .nav-dropdown.open .nav-dropdown-menu {
+    display: block !important;
+}
+
+.main-nav .nav-dropdown-menu a {
+    display: block !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 11px 16px !important;
+    color: #123f73 !important;
+    background: #ffffff !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+    white-space: nowrap !important;
+}
+
+.main-nav .nav-dropdown-menu a:hover {
+    background: #f1f6fb !important;
+    color: #1769aa !important;
+}/* FINAL DROPDOWN FIX */
+
+header,
+.main-nav {
+    overflow: visible !important;
+}
+
+.main-nav .nav-dropdown {
+    overflow: visible !important;
+}
+
+.main-nav .nav-dropdown.open .nav-dropdown-menu {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+}
+</style>
+</head>
+
+<body>
+
+<!-- =========================================
+     HEADER
+     ========================================= -->
+
+<header>
+
+    <div class="institutional-head">
+
+        <div class="head-logos left-logos">
+
+            <img class="deped"
+                 src="assets/deped-logo.png"
+                 alt="Department of Education">
+
+            <img class="bp"
+                 src="assets/bagong-pilipinas.png"
+                 alt="Bagong Pilipinas">
+
+            <img class="quezon"
+                 src="assets/deped-quezon.png"
+                 alt="DepEd Quezon">
+
+        </div>
+
+
+        <div class="official-title">
+
+            <div>Republic of the Philippines</div>
+
+            <h1>Department of Education</h1>
+
+            <div>REGION IV-A CALABARZON</div>
+
+            <div>Schools Division Office of Quezon Province</div>
+
+            <div class="district">
+                Mulanay District I
+            </div>
+
+            <strong>
+                REGINO P. PARDILLA ELEMENTARY SCHOOL
+            </strong>
+
+        </div>
+
+
+        <div class="head-right">
+
+            <img src="assets/school-logo.png"
+                 alt="Regino P. Pardilla Elementary School Logo">
+
+            <div class="clock-box">
+
+                <span id="time">
+                    00:00:00 AM
+                </span>
+
+                <small id="date">
+                    Monday, September 21, 2026
+                </small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================
+         NAVIGATION
+         ========================================= -->
+
+    <nav class="main-nav">
+
+        <a href="index.html">
+            Home
+        </a>
+
+
+        <!-- ABOUT US -->
+
+        <div class="nav-dropdown">
+
+            <button type="button"
+                    class="nav-drop-toggle"
+                    aria-expanded="false">
+
+                About Us
+                <span class="drop-arrow">▼</span>
+
+            </button>
+
+            <div class="nav-dropdown-menu">
+
+                <a href="index.html#about">
+                    History and Profile
+                </a>
+
+                <a href="index.html#about">
+                    Vision, Mission and Core Values
+                </a>
+
+                <a href="index.html#about">
+                    Mandate
+                </a>
+
+                <a href="index.html#about">
+                    Organization Structure
+                </a>
+
+                <a href="index.html#contact">
+                    Contact Us
+                </a>
+
+                <a href="index.html#about">
+                    Citizen's Charter
+                </a>
+
+                <a href="index.html#about">
+                    Data Privacy Notice
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- PROGRAMS & PROJECTS -->
+
+        <a href="index.html#programs">
+            Programs &amp; Projects
+        </a>
+
+
+        <!-- SCHOOL DATA -->
+
+        <a href="index.html#data">
+            School Data
+        </a>
+
+
+        <!-- RESOURCES -->
+
+        <div class="nav-dropdown">
+
+            <button type="button"
+                    class="nav-drop-toggle"
+                    aria-expanded="false">
+
+                Resources
+                <span class="drop-arrow">▼</span>
+
+            </button>
+
+            <div class="nav-dropdown-menu">
+
+                <a href="school-memo.html">
+                    School Memo
+                </a>
+
+                <a href="index.html#office-memo">
+                    Office Memo
+                </a>
+
+                <a href="index.html#advisories">
+                    Advisories
+                </a>
+
+                <a href="index.html#school-forms">
+                    School Forms &amp; Template
+                </a>
+
+                <a href="index.html#dts">
+                    Document Tracking System
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- NEWS -->
+
+        <a href="index.html#news">
+            News
+        </a>
+
+
+        <!-- CALENDAR -->
+
+        <a href="index.html#calendar">
+            Calendar
+        </a>
+
+
+        <!-- GALLERY -->
+
+        <a href="index.html#gallery">
+            Gallery
+        </a>
+
+
+        <!-- CONTACT -->
+
+        <a href="index.html#contact">
+            Contact
+        </a>
+
+
+        <!-- SEARCH -->
+
+        <div class="nav-search">
+
+            <input type="search"
+                   placeholder="Search"
+                   aria-label="Search">
+
+            <button type="button"
+                    aria-label="Search">
+                ⌕
+            </button>
+
+        </div>
+
+    </nav>
+
+</header>
+
+<!-- =========================================
+     NAVIGATION
+     ========================================= -->
+
+
+
+<!-- =========================================
+     SCHOOL MEMORANDA CONTENT
+     ========================================= -->
+
+<main>
+
+<section class="memo-page">
+
+    <div class="memo-page-header">
+
+        <span class="memo-kicker">
+            RPPES RESOURCES
+        </span>
+
+        <h1>School Memoranda</h1>
+
+        <p>
+            Official school memoranda and issuances of
+            Regino P. Pardilla Elementary School
+        </p>
+
+    </div>
+
+
+    <div class="memo-panel">
+
+        <!-- SEARCH AND FILTER -->
+
+        <div class="memo-tools">
+
+            <div class="memo-search-box">
+
+                <label for="memoSearch">
+                    Search Memoranda
+                </label>
+
+                <input
+                    type="text"
+                    id="memoSearch"
+                    placeholder="Search by memo number, title or description..."
+                >
+
+            </div>
+
+
+          <div class="memo-filter">
+
+    <label for="memoMonth">
+        Month
+    </label>
+
+    <select id="memoMonth">
+
+        <option value="all">
+            All Months
+        </option>
+
+        <option value="01">January</option>
+        <option value="02">February</option>
+        <option value="03">March</option>
+        <option value="04">April</option>
+        <option value="05">May</option>
+        <option value="06">June</option>
+        <option value="07">July</option>
+        <option value="08">August</option>
+        <option value="09">September</option>
+        <option value="10">October</option>
+        <option value="11">November</option>
+        <option value="12">December</option>
+
+    </select>
+
+</div>
+
+
+<div class="memo-filter">
+
+    <label for="memoYear">
+        Year
+    </label>
+
+    <select id="memoYear">
+    <option value="">All Years</option>
+    <option value="2026">2026</option>
+    <option value="2027">2027</option>
+    <option value="2028">2028</option>
+    <option value="2029">2029</option>
+    <option value="2030">2030</option>
+</select>
+
+</div>
+
+
+            <button
+                type="button"
+                class="memo-search-button"
+                id="memoSearchButton">
+
+                🔎 Search
+
+            </button>
+
+        </div>
+
+
+        <div class="memo-record-count">
+
+            <strong id="memoCount">2</strong>
+            Memoranda
+
+        </div>
+
+
+        <!-- MEMORANDA TABLE -->
+
+        <div class="memo-table-wrap">
+
+            <table class="memo-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Date</th>
+
+                        <th>Number / Series</th>
+
+                        <th>Title</th>
+
+                        <th>File</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="memoTableBody">
+
+
+                    <!-- MEMO 001 -->
+
+                    <tr
+    class="memo-record"
+    data-month="09"
+    data-year="2026">
+
+                        <td>
+                            <strong>
+                                September 21, 2026
+                            </strong>
+                        </td>
+
+                        <td>
+                            <span class="memo-number">
+                                RPPES SM No. 001-26
+                            </span>
+                        </td>
+
+                        <td>
+
+                            <div class="memo-title">
+                                Sample School Memorandum Title
+                            </div>
+
+                            <div class="memo-description">
+                                Sample description of the school memorandum.
+                            </div>
+
+                        </td>
+
+                        <td>
+
+                            <a
+                                href="#"
+                                class="memo-view-button">
+
+                                📄 View
+
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+
+                    <!-- MEMO 002 -->
+
+                    <tr
+    class="memo-record"
+    data-month="09"
+    data-year="2026">
+
+                        <td>
+                            <strong>
+                                September 15, 2026
+                            </strong>
+                        </td>
+
+                        <td>
+                            <span class="memo-number">
+                                RPPES SM No. 002-26
+                            </span>
+                        </td>
+
+                        <td>
+
+                            <div class="memo-title">
+                                Sample Administrative Memorandum
+                            </div>
+
+                            <div class="memo-description">
+                                Sample description of the memorandum.
+                            </div>
+
+                        </td>
+
+                        <td>
+
+                            <a
+                                href="#"
+                                class="memo-view-button">
+
+                                📄 View
+
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+
+                </tbody>
+
+            </table>
+
+
+            <div
+                class="memo-empty"
+                id="memoEmpty">
+
+                No memorandum found.
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- =========================================
+     FOOTER
+     ========================================= -->
+
+<footer id="contact">
+
+    <div class="footer-brand">
+
+        <img
+            src="assets/school-logo.png"
+            alt="RPPES Logo">
+
+        <div>
+
+            <b>
+                REGINO P. PARDILLA ELEMENTARY SCHOOL
+            </b>
+
+            <p>
+                Mulanay District I<br>
+                Schools Division Office of Quezon Province
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-contact">
+
+        <b>CONTACT</b>
+
+        <p>
+            Centro II, Brgy. Ajos<br>
+            Mulanay, Quezon
+        </p>
+
+        <p>
+            108919@deped.gov.ph
+        </p>
+
+    </div>
+
+
+    <div class="footer-links">
+
+        <b>QUICK LINKS</b>
+
+        <p>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <br>
+
+            <a href="index.html#about">
+                About Us
+            </a>
+
+            <br>
+
+            <a href="index.html#programs">
+                Programs &amp; Projects
+            </a>
+
+            <br>
+
+            <a href="index.html#data">
+                School Data
+            </a>
+
+            <br>
+
+            <a href="school-memo.html">
+                School Memo
+            </a>
+
+        </p>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        © 2026 Regino P. Pardilla Elementary School
+        • Official School Website
+
+    </div>
+
+</footer>
+
+
+<!-- =========================================
+     NAVIGATION + SEARCH SCRIPT
+     ========================================= -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+
+(function () {
+
+    /* -------------------------------
+       DROPDOWN MENUS
+       ------------------------------- */
+
+    document
+        .querySelectorAll('.main-nav .nav-dropdown')
+        .forEach(function(dropdown) {
+
+            var toggle =
+                dropdown.querySelector('.nav-drop-toggle');
+
+            if (!toggle) return;
+
+            toggle.addEventListener('click', function(e) {
+
+                e.preventDefault();
+                e.stopPropagation();
+
+                document
+                    .querySelectorAll(
+                        '.main-nav .nav-dropdown'
+                    )
+                    .forEach(function(other) {
+
+                        if (other !== dropdown) {
+                            other.classList.remove('open');
+
+                            var otherToggle =
+                                other.querySelector(
+                                    '.nav-drop-toggle'
+                                );
+
+                            if (otherToggle) {
+                                otherToggle
+                                    .setAttribute(
+                                        'aria-expanded',
+                                        'false'
+                                    );
+                            }
+                        }
+
+                    });
+
+
+                dropdown.classList.toggle('open');
+
+                toggle.setAttribute(
+                    'aria-expanded',
+                    dropdown.classList.contains('open')
+                );
+
+            });
+
+        });
+
+
+    /* Close dropdown when clicking outside */
+
+    document.addEventListener('click', function(e) {
+
+        if (!e.target.closest('.nav-dropdown')) {
+
+            document
+                .querySelectorAll(
+                    '.main-nav .nav-dropdown'
+                )
+                .forEach(function(dropdown) {
+
+                    dropdown.classList.remove('open');
+
+                    var toggle =
+                        dropdown.querySelector(
+                            '.nav-drop-toggle'
+                        );
+
+                    if (toggle) {
+
+                        toggle.setAttribute(
+                            'aria-expanded',
+                            'false'
+                        );
+
+                    }
+
+                });
+
+        }
+
+    });
+
+
+    /* -------------------------------
+       CLOCK
+       ------------------------------- */
+
+    function updateClock() {
+
+        var now = new Date();
+
+        var timeElement =
+            document.getElementById('time');
+
+        var dateElement =
+            document.getElementById('date');
+
+        if (timeElement) {
+
+            timeElement.textContent =
+                now.toLocaleTimeString(
+                    'en-US',
+                    {
+                        hour: '2-digit',
+                        minute: '2-digit',
+                        second: '2-digit'
+                    }
+                );
+
+        }
+
+        if (dateElement) {
+
+            dateElement.textContent =
+                now.toLocaleDateString(
+                    'en-US',
+                    {
+                        weekday: 'short',
+                        month: 'short',
+                        day: '2-digit',
+                        year: 'numeric'
+                    }
+                );
+
+        }
+
+    }
+
+    updateClock();
+
+    setInterval(updateClock, 1000);
+
+
+
+/* -------------------------------
+   SUPABASE CONFIGURATION
+   ------------------------------- */
+
+const SUPABASE_URL =
+    "https://pmaezkwiumffkrnkedxe.supabase.co";
+
+const SUPABASE_KEY =
+    "sb_publishable_zdFawkn6UgH-RiWCPM1iGw_HmKYvbFS";
+
+const db = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
+
+let allMemos = [];
+
+
+/* -------------------------------
+   FORMAT DATE
+   ------------------------------- */
+
+function formatMemoDate(dateValue) {
+
+    if (!dateValue) return "—";
+
+    const date =
+        new Date(dateValue + "T00:00:00");
+
+    if (Number.isNaN(date.getTime())) {
+        return dateValue;
+    }
+
+    return date.toLocaleDateString(
+        "en-US",
+        {
+            month: "long",
+            day: "numeric",
+            year: "numeric"
+        }
+    );
+}
+
+
+/* -------------------------------
+   GET MONTH NUMBER
+   ------------------------------- */
+
+function getMonthNumber(
+    memoMonth,
+    dateIssued
+) {
+
+    const monthMap = {
+        january: "01",
+        february: "02",
+        march: "03",
+        april: "04",
+        may: "05",
+        june: "06",
+        july: "07",
+        august: "08",
+        september: "09",
+        october: "10",
+        november: "11",
+        december: "12"
+    };
+
+    if (memoMonth) {
+
+        const value =
+            String(memoMonth)
+                .trim()
+                .toLowerCase();
+
+        if (/^\d{1,2}$/.test(value)) {
+            return value.padStart(2, "0");
+        }
+
+        if (monthMap[value]) {
+            return monthMap[value];
+        }
+    }
+
+    if (dateIssued) {
+
+        const date =
+            new Date(
+                dateIssued + "T00:00:00"
+            );
+
+        if (!Number.isNaN(date.getTime())) {
+
+            return String(
+                date.getMonth() + 1
+            ).padStart(2, "0");
+        }
+    }
+
+    return "";
+}
+
+
+/* -------------------------------
+   LOAD MEMORANDA
+   ------------------------------- */
+
+async function loadMemos() {
+
+    const tbody =
+        document.getElementById(
+            "memoTableBody"
+        );
+
+    tbody.innerHTML = "";
+
+    const loadingRow =
+        document.createElement("tr");
+
+    const loadingCell =
+        document.createElement("td");
+
+    loadingCell.colSpan = 4;
+    loadingCell.style.textAlign = "center";
+    loadingCell.style.padding = "30px";
+
+    loadingCell.textContent =
+        "Loading memoranda...";
+
+    loadingRow.appendChild(loadingCell);
+    tbody.appendChild(loadingRow);
+
+
+    const result = await db
+        .from("school_documents")
+        .select(
+            "id, document_type, memo_number, title, description, date_issued, school_year, memo_month, file_path, status"
+        )
+        .eq(
+            "document_type",
+            "School Memorandum"
+        )
+        .eq(
+            "status",
+            "Published"
+        )
+        .order(
+            "date_issued",
+            {
+                ascending: false
+            }
+        );
+
+
+    if (result.error) {
+
+        console.error(
+            "Supabase error:",
+            result.error
+        );
+
+        tbody.innerHTML = "";
+
+        const errorRow =
+            document.createElement("tr");
+
+        const errorCell =
+            document.createElement("td");
+
+        errorCell.colSpan = 4;
+        errorCell.style.textAlign = "center";
+        errorCell.style.padding = "30px";
+        errorCell.style.color = "#b42318";
+
+        errorCell.textContent =
+            "Unable to load school memoranda.";
+
+        errorRow.appendChild(errorCell);
+        tbody.appendChild(errorRow);
+
+        document.getElementById(
+            "memoCount"
+        ).textContent = "0";
+
+        return;
+    }
+
+
+    allMemos =
+        result.data || [];
+
+    filterMemos();
+}
+
+
+/* -------------------------------
+   DISPLAY MEMORANDA
+   ------------------------------- */
+
+function renderMemos(records) {
+
+    const tbody =
+        document.getElementById(
+            "memoTableBody"
+        );
+
+    const count =
+        document.getElementById(
+            "memoCount"
+        );
+
+    const empty =
+        document.getElementById(
+            "memoEmpty"
+        );
+
+    tbody.innerHTML = "";
+
+
+    records.forEach(function(memo) {
+
+        const row =
+            document.createElement("tr");
+
+        row.className =
+            "memo-record";
+
+
+        const monthNumber =
+            getMonthNumber(
+                memo.memo_month,
+                memo.date_issued
+            );
+
+
+        const year =
+            memo.school_year ||
+            (
+                memo.date_issued
+                    ? memo.date_issued.substring(0, 4)
+                    : ""
+            );
+
+
+        row.setAttribute(
+            "data-month",
+            monthNumber
+        );
+
+        row.setAttribute(
+            "data-year",
+            year
+        );
+
+
+        const dateCell =
+            document.createElement("td");
+
+        const dateStrong =
+            document.createElement("strong");
+
+        dateStrong.textContent =
+            formatMemoDate(
+                memo.date_issued
+            );
+
+        dateCell.appendChild(
+            dateStrong
+        );
+
+
+        const numberCell =
+            document.createElement("td");
+
+        const numberSpan =
+            document.createElement("span");
+
+        numberSpan.className =
+            "memo-number";
+
+        numberSpan.textContent =
+            memo.memo_number || "—";
+
+        numberCell.appendChild(
+            numberSpan
+        );
+
+
+        const titleCell =
+            document.createElement("td");
+
+        const titleDiv =
+            document.createElement("div");
+
+        titleDiv.className =
+            "memo-title";
+
+        titleDiv.textContent =
+            memo.title ||
+            "Untitled Memorandum";
+
+        titleCell.appendChild(
+            titleDiv
+        );
+
+
+        if (memo.description) {
+
+            const descriptionDiv =
+                document.createElement("div");
+
+            descriptionDiv.className =
+                "memo-description";
+
+            descriptionDiv.textContent =
+                memo.description;
+
+            titleCell.appendChild(
+                descriptionDiv
+            );
+        }
+
+
+        const fileCell =
+            document.createElement("td");
+
+
+        if (memo.file_path) {
+
+            const viewLink =
+                document.createElement("a");
+
+            viewLink.href =
+                memo.file_path;
+
+            viewLink.target =
+                "_blank";
+
+            viewLink.rel =
+                "noopener noreferrer";
+
+            viewLink.className =
+                "memo-view-button";
+
+            viewLink.textContent =
+                "📄 View";
+
+            fileCell.appendChild(
+                viewLink
+            );
+
+        } else {
+
+            fileCell.textContent =
+                "No file";
+        }
+
+
+        row.appendChild(dateCell);
+        row.appendChild(numberCell);
+        row.appendChild(titleCell);
+        row.appendChild(fileCell);
+
+        tbody.appendChild(row);
+    });
+
+
+    count.textContent =
+        records.length;
+
+
+    empty.style.display =
+        records.length === 0
+            ? "block"
+            : "none";
+}
+
+
+/* -------------------------------
+   SEARCH + FILTER
+   ------------------------------- */
+
+function filterMemos() {
+
+    const search =
+        document.getElementById(
+            "memoSearch"
+        ).value
+        .toLowerCase()
+        .trim();
+
+
+    const month =
+        document.getElementById(
+            "memoMonth"
+        ).value;
+
+
+    const year =
+        document.getElementById(
+            "memoYear"
+        ).value;
+
+
+    const filtered =
+        allMemos.filter(function(memo) {
+
+            const searchableText = [
+                memo.memo_number || "",
+                memo.title || "",
+                memo.description || ""
+            ]
+            .join(" ")
+            .toLowerCase();
+
+
+            const recordMonth =
+                getMonthNumber(
+                    memo.memo_month,
+                    memo.date_issued
+                );
+
+
+            const recordYear =
+                memo.school_year ||
+                (
+                    memo.date_issued
+                        ? memo.date_issued.substring(0, 4)
+                        : ""
+                );
+
+
+            const searchMatch =
+                !search ||
+                searchableText.includes(search);
+
+
+            const monthMatch =
+                month === "all" ||
+                recordMonth === month;
+
+
+            const yearMatch =
+                year === "" ||
+                recordYear === year;
+
+
+            return (
+                searchMatch &&
+                monthMatch &&
+                yearMatch
+            );
+        });
+
+
+    renderMemos(filtered);
+}
+
+
+/* -------------------------------
+   FILTER EVENTS
+   ------------------------------- */
+
+document
+    .getElementById("memoMonth")
+    .addEventListener(
+        "change",
+        filterMemos
+    );
+
+document
+    .getElementById("memoSearch")
+    .addEventListener(
+        "input",
+        filterMemos
+    );
+
+document
+    .getElementById("memoYear")
+    .addEventListener(
+        "change",
+        filterMemos
+    );
+
+document
+    .getElementById("memoSearchButton")
+    .addEventListener(
+        "click",
+        filterMemos
+    );
+
+
+/* -------------------------------
+   START
+   ------------------------------- */
+
+loadMemos();
+
+
+})();
+   
+
+
+</script>
+
+</body>
+</html>
