@@ -1,0 +1,46 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>School Location | Regino P. Pardilla Elementary School</title><link rel="stylesheet" href="style.css"><style>.location-page{max-width:1100px;margin:42px auto;padding:0 22px 60px}.location-card{background:#fff;border:1px solid #d9e9df;border-radius:14px;padding:30px;box-shadow:0 8px 24px rgba(20,80,45,.07)}.location-card h1{text-align:center;color:#176b3b}.location-card p{text-align:center;color:#647b6c}.map-link{display:block;width:max-content;max-width:100%;margin:22px auto;background:#187844;color:#fff;padding:13px 22px;border-radius:8px;text-decoration:none;font-weight:700}.location-address{text-align:center;font-size:18px;color:#244b33!important}@media(max-width:650px){.location-page{padding:0 12px 40px}.location-card{padding:20px}}</style></head><body><header>
+  <div class="institutional-head">
+    <div class="head-logos left-logos">
+      <img class="deped" src="assets/deped-logo.png" alt="Department of Education">
+      <img class="bp" src="assets/bagong-pilipinas.png" alt="Bagong Pilipinas">
+      <img class="quezon" src="assets/deped-quezon.png" alt="DepEd Quezon">
+    </div>
+    <div class="official-title">
+      <div>Republic of the Philippines</div>
+      <h1>Department of Education</h1>
+      <div>REGION IV-A CALABARZON</div>
+      <div>Schools Division Office of Quezon Province</div>
+      <div class="district">Mulanay District I</div>
+      <strong>REGINO P. PARDILLA ELEMENTARY SCHOOL</strong>
+    </div>
+    <div class="head-right">
+      <img src="assets/school-logo.png" alt="Regino P. Pardilla Elementary School Logo">
+      <div class="clock-box"><span id="time">00:00:00 AM</span><small id="date">Monday, September 21, 2026</small></div>
+    </div>
+  </div>
+  <nav class="main-nav">
+    <a href="index.html">Home</a>
+    <div class="nav-dropdown">
+      <button type="button" class="nav-drop-toggle" aria-expanded="false">About Us <span class="drop-arrow">▼</span></button>
+      <div class="nav-dropdown-menu">
+        <a href="index.html#about">History and Profile</a><a href="index.html#about">Vision, Mission and Core Values</a><a href="index.html#about">Mandate</a><a href="index.html#about">Organization Structure</a><a href="index.html#contact">Contact Us</a><a href="index.html#about">Citizen's Charter</a><a href="index.html#about">Data Privacy Notice</a>
+      </div>
+    </div>
+    <a href="index.html#programs">Programs &amp; Projects</a>
+    <a href="index.html#data">School Data</a>
+    <div class="nav-dropdown">
+      <button type="button" class="nav-drop-toggle" aria-expanded="false">Resources <span class="drop-arrow">▼</span></button>
+      <div class="nav-dropdown-menu">
+        <a href="school-memo.html">School Memo</a><a href="index.html#office-memo">Office Memo</a><a href="index.html#advisories">Advisories</a><a href="school-forms.html">School Forms &amp; Templates</a><a href="index.html#dts">Document Tracking System</a>
+      </div>
+    </div>
+    <a href="index.html#news">News</a><a href="index.html#calendar">Calendar</a><a href="index.html#gallery">Gallery</a><div class="nav-dropdown contact-dropdown">
+      <button type="button" class="nav-drop-toggle" aria-expanded="false">Contact Us <span class="drop-arrow">▼</span></button>
+      <div class="nav-dropdown-menu">
+        <a href="office-directory.html">Office Directory</a>
+        <a href="location.html">Location</a>
+        <a href="index.html#contact">Feedback and Complaints (CSM)</a>
+      </div>
+    </div>
+  </nav>
+</header><main class="location-page"><section class="location-card"><h1>School Location</h1><p class="location-address"><strong>Regino P. Pardilla Elementary School</strong><br>Barangay Bagupaye, Mulanay, Quezon, Philippines</p><p>Use the map search below to locate the school and get directions.</p><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Regino+P.+Pardilla+Elementary+School+Mulanay+Quezon" target="_blank" rel="noopener">Open in Google Maps ↗</a></section></main><script>function updateClock(){const n=new Date();const t=document.getElementById('time'),d=document.getElementById('date');if(t)t.textContent=n.toLocaleTimeString('en-US');if(d)d.textContent=n.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'2-digit',year:'numeric'});}updateClock();setInterval(updateClock,1000);document.querySelectorAll('.nav-dropdown .nav-drop-toggle').forEach(btn=>btn.addEventListener('click',e=>{e.stopPropagation();const p=btn.closest('.nav-dropdown');p.classList.toggle('open');btn.setAttribute('aria-expanded',String(p.classList.contains('open')));}));document.addEventListener('click',e=>{if(!e.target.closest('.nav-dropdown'))document.querySelectorAll('.nav-dropdown').forEach(d=>d.classList.remove('open'));});</script></body></html>

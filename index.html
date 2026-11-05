@@ -14,7 +14,7 @@
 .nav-dropdown-menu{display:none;position:absolute;top:100%;left:0;min-width:245px;background:#fff;border:1px solid #dbe3ee;box-shadow:0 8px 20px rgba(0,0,0,.14);z-index:9999}
 .nav-dropdown-menu a{display:block!important;padding:12px 16px!important;color:#163a6b!important;background:#fff!important;text-decoration:none;white-space:nowrap;border-bottom:1px solid #eef2f7}
 .nav-dropdown-menu a:hover,.nav-dropdown-menu a:focus{background:#edf5ff!important;color:#0b55a0!important}
-.nav-dropdown:hover .nav-dropdown-menu,.nav-dropdown.open .nav-dropdown-menu{display:block}
+.nav-dropdown.open .nav-dropdown-menu{display:block}
 @media(max-width:900px){.nav-dropdown{width:100%}.nav-drop-toggle{width:100%;text-align:left;padding:12px 16px}.nav-dropdown-menu{position:static;width:100%;min-width:0;box-shadow:none}}
 </style>
 
@@ -62,7 +62,6 @@
   box-shadow: 0 8px 20px rgba(0,0,0,.14);
   z-index: 9999;
 }
-.main-nav .nav-dropdown:hover .nav-dropdown-menu,
 .main-nav .nav-dropdown.open .nav-dropdown-menu {
   display: block;
 }
@@ -92,6 +91,15 @@
 }
 </style>
 
+
+<style>
+/* Contact Us nested dropdown */
+.contact-dropdown{position:relative}
+.contact-dropdown>.nav-dropdown-menu{min-width:245px}
+.contact-dropdown>.nav-dropdown-menu a{white-space:normal}
+@media(min-width:901px){.contact-dropdown>.nav-dropdown-menu{top:0;left:100%;margin-left:1px}}
+@media(max-width:900px){.contact-dropdown>.nav-dropdown-menu{position:static;margin:0 0 0 14px;border-left:3px solid #23834f}}
+</style>
 </head>
 <body>
 <!-- Client Satisfaction Measurement popup -->
@@ -185,7 +193,14 @@
     <a href="#news">News</a>
     <a href="#calendar">Calendar</a>
     <a href="#gallery">Gallery</a>
-    <a href="#contact">Contact</a>
+    <div class="nav-dropdown contact-dropdown">
+      <button type="button" class="nav-drop-toggle" aria-expanded="false">Contact Us <span class="drop-arrow">▼</span></button>
+      <div class="nav-dropdown-menu">
+        <a href="office-directory.html">Office Directory</a>
+        <a href="location.html">Location</a>
+        <a href="index.html#contact">Feedback and Complaints (CSM)</a>
+      </div>
+    </div>
     <div class="nav-search"><input type="search" placeholder="Search" aria-label="Search"><button aria-label="Search">⌕</button></div>
   </nav>
 </header>

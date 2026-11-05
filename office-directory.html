@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Office Directory | Regino P. Pardilla Elementary School</title><link rel="stylesheet" href="style.css">
+<style>
+.directory-page{max-width:1240px;margin:42px auto;padding:0 22px 60px;color:#173b2b}
+.directory-card{background:#fff;border:1px solid #d9e9df;border-radius:14px;padding:28px;box-shadow:0 8px 24px rgba(20,80,45,.07)}
+.directory-page h1{text-align:center;color:#176b3b;margin:0 0 8px;font-size:34px}.directory-sub{text-align:center;color:#647b6c;margin:0 0 28px}
+.directory-search{display:flex;gap:12px;margin-bottom:24px}.directory-search input{flex:1;min-width:0;padding:14px 16px;border:1px solid #cbded1;border-radius:8px;font:inherit}.directory-search button{background:#187844;color:#fff;border:0;border-radius:8px;padding:0 28px;font-weight:700}
+.directory-count{margin:10px 0;color:#365d45}.directory-table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;min-width:720px}th{background:#175f37;color:#fff;padding:15px 12px;text-align:center}td{border:1px solid #cbd8ce;padding:16px 14px;color:#263c2e}tbody tr:nth-child(even){background:#f3f8f4}.directory-note{margin-top:20px;color:#647b6c;font-size:13px}
+@media(max-width:650px){.directory-page{padding:0 12px 40px}.directory-card{padding:18px}.directory-page h1{font-size:27px}.directory-search{flex-direction:column}.directory-search button{padding:13px}}
+</style></head><body><header>
+  <div class="institutional-head">
+    <div class="head-logos left-logos">
+      <img class="deped" src="assets/deped-logo.png" alt="Department of Education">
+      <img class="bp" src="assets/bagong-pilipinas.png" alt="Bagong Pilipinas">
+      <img class="quezon" src="assets/deped-quezon.png" alt="DepEd Quezon">
+    </div>
+    <div class="official-title">
+      <div>Republic of the Philippines</div>
+      <h1>Department of Education</h1>
+      <div>REGION IV-A CALABARZON</div>
+      <div>Schools Division Office of Quezon Province</div>
+      <div class="district">Mulanay District I</div>
+      <strong>REGINO P. PARDILLA ELEMENTARY SCHOOL</strong>
+    </div>
+    <div class="head-right">
+      <img src="assets/school-logo.png" alt="Regino P. Pardilla Elementary School Logo">
+      <div class="clock-box"><span id="time">00:00:00 AM</span><small id="date">Monday, September 21, 2026</small></div>
+    </div>
+  </div>
+  <nav class="main-nav">
+    <a href="index.html">Home</a>
+    <div class="nav-dropdown">
+      <button type="button" class="nav-drop-toggle" aria-expanded="false">About Us <span class="drop-arrow">▼</span></button>
+      <div class="nav-dropdown-menu">
+        <a href="index.html#about">History and Profile</a><a href="index.html#about">Vision, Mission and Core Values</a><a href="index.html#about">Mandate</a><a href="index.html#about">Organization Structure</a><a href="index.html#contact">Contact Us</a><a href="index.html#about">Citizen's Charter</a><a href="index.html#about">Data Privacy Notice</a>
+      </div>
+    </div>
+    <a href="index.html#programs">Programs &amp; Projects</a>
+    <a href="index.html#data">School Data</a>
+    <div class="nav-dropdown">
+      <button type="button" class="nav-drop-toggle" aria-expanded="false">Resources <span class="drop-arrow">▼</span></button>
+      <div class="nav-dropdown-menu">
+        <a href="school-memo.html">School Memo</a><a href="index.html#office-memo">Office Memo</a><a href="index.html#advisories">Advisories</a><a href="school-forms.html">School Forms &amp; Templates</a><a href="index.html#dts">Document Tracking System</a>
+      </div>
+    </div>
+    <a href="index.html#news">News</a><a href="index.html#calendar">Calendar</a><a href="index.html#gallery">Gallery</a><div class="nav-dropdown contact-dropdown">
+      <button type="button" class="nav-drop-toggle" aria-expanded="false">Contact Us <span class="drop-arrow">▼</span></button>
+      <div class="nav-dropdown-menu">
+        <a href="office-directory.html">Office Directory</a>
+        <a href="location.html">Location</a>
+        <a href="index.html#contact">Feedback and Complaints (CSM)</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<main class="directory-page"><section class="directory-card"><h1>▦ Official School Directory</h1><p class="directory-sub">Official contact information of Regino P. Pardilla Elementary School.</p>
+<div class="directory-search"><input id="directorySearch" type="search" placeholder="Search school, contact number, email address..." aria-label="Search directory"><button type="button" onclick="filterDirectory()">⌕ Search</button></div>
+<p class="directory-count">Total Records: <strong id="recordCount">1</strong></p>
+<div class="directory-table-wrap"><table><thead><tr><th>No.</th><th>Office</th><th>Contact No.</th><th>Email Address</th><th>Facebook Page</th></tr></thead><tbody id="directoryBody"><tr><td>1</td><td>Regino P. Pardilla Elementary School</td><td>(042) 717 5913 / 710 2500</td><td><a href="mailto:108919@deped.gov.ph">108919@deped.gov.ph</a></td><td>DepEd Regino P. Pardilla Elementary School</td></tr></tbody></table></div>
+<p class="directory-note">For official school inquiries, please use the contact details listed above.</p></section></main>
+<script>
+function filterDirectory(){const q=document.getElementById('directorySearch').value.toLowerCase();const row=document.querySelector('#directoryBody tr');const match=row.innerText.toLowerCase().includes(q);row.style.display=match?'':'none';document.getElementById('recordCount').textContent=match?'1':'0';}
+document.getElementById('directorySearch').addEventListener('input',filterDirectory);
+function updateClock(){const n=new Date();const t=document.getElementById('time'),d=document.getElementById('date');if(t)t.textContent=n.toLocaleTimeString('en-US');if(d)d.textContent=n.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'2-digit',year:'numeric'});}updateClock();setInterval(updateClock,1000);
+document.querySelectorAll('.nav-dropdown .nav-drop-toggle').forEach(btn=>btn.addEventListener('click',e=>{e.stopPropagation();const p=btn.closest('.nav-dropdown');p.classList.toggle('open');btn.setAttribute('aria-expanded',String(p.classList.contains('open')));}));
+document.addEventListener('click',e=>{if(!e.target.closest('.nav-dropdown'))document.querySelectorAll('.nav-dropdown').forEach(d=>{d.classList.remove('open');const b=d.querySelector('.nav-drop-toggle');if(b)b.setAttribute('aria-expanded','false');});});
+</script></body></html>
