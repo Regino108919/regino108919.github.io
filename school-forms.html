@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>School Forms &amp; Templates | Regino P. Pardilla Elementary School</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .forms-page{background:#f5f8fc;min-height:70vh;padding:44px 5% 60px}
+    .forms-wrap{max-width:1180px;margin:0 auto}
+    .forms-heading{text-align:center;margin-bottom:28px}
+    .forms-kicker{display:inline-block;color:#1769aa;font-size:13px;font-weight:800;letter-spacing:1.5px;margin-bottom:8px}
+    .forms-heading h1{color:#123f73;font-size:clamp(28px,4vw,38px);margin:0 0 10px}
+    .forms-heading p{color:#64748b;max-width:720px;margin:0 auto;line-height:1.6}
+    .forms-panel{background:#fff;border:1px solid #e2eaf2;border-radius:16px;padding:28px;box-shadow:0 8px 25px rgba(0,0,0,.06)}
+    .forms-toolbar{display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:22px}
+    .forms-search{flex:1 1 300px;position:relative}
+    .forms-search input{width:100%;box-sizing:border-box;padding:13px 15px 13px 42px;border:1px solid #ccd8e5;border-radius:9px;font-size:15px}
+    .forms-search span{position:absolute;left:14px;top:11px;color:#64748b;font-size:19px}
+    .forms-count{color:#52657b;font-size:14px}
+    .forms-categories{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:10px 0 24px}
+    .category-card{border:1px solid #dbe5f0;border-radius:13px;background:#fff;padding:20px;text-align:left;cursor:pointer;display:flex;gap:15px;align-items:center;transition:.18s ease;color:#173f70}
+    .category-card:hover{border-color:#1769aa;transform:translateY(-2px);box-shadow:0 7px 18px rgba(23,105,170,.10)}
+    .category-card.active{border:2px solid #1769aa;background:#f2f7fd;padding:19px}
+    .category-icon{width:52px;height:52px;flex:0 0 52px;border-radius:12px;background:#eaf2fb;color:#1769aa;display:grid;place-items:center;font-size:25px}
+    .category-card strong{display:block;font-size:17px;margin-bottom:4px}
+    .category-card small{display:block;color:#718096;line-height:1.4;font-size:13px}
+    .category-count{margin-left:auto;background:#edf3f9;color:#365675;border-radius:20px;padding:5px 10px;font-size:12px;font-weight:700;white-space:nowrap}
+    .category-title{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:6px 0 15px}
+    .category-title h2{margin:0;color:#123f73;font-size:22px}
+    .category-title p{margin:5px 0 0;color:#718096;font-size:14px}
+    .document-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+    .document-card{border:1px solid #e0e8f1;border-radius:12px;padding:20px;display:flex;gap:16px;align-items:flex-start;background:#fff;min-width:0}
+    .file-icon{width:54px;height:60px;flex:0 0 54px;border-radius:9px;background:#eaf2fb;color:#2467a7;display:grid;place-items:center;font-size:28px}
+    .document-info{flex:1;min-width:0}
+    .document-info h3{margin:1px 0 6px;color:#173f70;font-size:17px}
+    .document-info p{margin:0 0 12px;color:#718096;font-size:13px;line-height:1.5}
+    .file-meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+    .file-meta span{font-size:11px;font-weight:700;color:#45617d;background:#f0f4f8;padding:5px 8px;border-radius:20px}
+    .download-link{display:inline-flex;align-items:center;gap:7px;background:#1769aa;color:#fff!important;text-decoration:none;padding:9px 14px;border-radius:7px;font-size:13px;font-weight:700}
+    .download-link:hover{background:#0f4f83}
+    .external-empty{border:1px dashed #cbd8e6;border-radius:12px;padding:38px 20px;text-align:center;color:#718096;background:#fafcff}
+    .external-empty .empty-icon{font-size:36px;color:#8aa2ba;margin-bottom:10px}
+    .external-empty h3{color:#173f70;margin:0 0 7px}
+    .external-empty p{margin:0;font-size:14px}
+    .forms-note{margin-top:20px;padding:13px 15px;background:#f3f7fb;border-left:4px solid #1769aa;color:#52657b;border-radius:5px;font-size:13px;line-height:1.5}
+    @media(max-width:700px){.forms-page{padding:28px 4% 42px}.forms-panel{padding:17px}.forms-categories,.document-grid{grid-template-columns:1fr}.category-card{padding:15px}.category-card.active{padding:14px}.document-card{padding:15px}.category-title{align-items:flex-start;flex-direction:column}}
+  </style>
+</head>
+<body>
+<header>
+  <div class="institutional-head">
+    <div class="head-logos left-logos">
+      <img class="deped" src="assets/deped-logo.png" alt="Department of Education">
+      <img class="bp" src="assets/bagong-pilipinas.png" alt="Bagong Pilipinas">
+      <img class="quezon" src="assets/deped-quezon.png" alt="DepEd Quezon">
+    </div>
+    <div class="official-title">
+      <div>Republic of the Philippines</div>
+      <h1>Department of Education</h1>
+      <div>REGION IV-A CALABARZON</div>
+      <div>Schools Division Office of Quezon Province</div>
+      <div class="district">Mulanay District I</div>
+      <strong>REGINO P. PARDILLA ELEMENTARY SCHOOL</strong>
+    </div>
+    <div class="head-right">
+      <img src="assets/school-logo.png" alt="Regino P. Pardilla Elementary School Logo">
+      <div class="clock-box"><span id="time">00:00:00 AM</span><small id="date">Monday, September 21, 2026</small></div>
+    </div>
+  </div>
+  <nav class="main-nav">
+    <a href="index.html">Home</a>
+    <div class="nav-dropdown">
+      <button type="button" class="nav-drop-toggle" aria-expanded="false">About Us <span class="drop-arrow">▼</span></button>
+      <div class="nav-dropdown-menu">
+        <a href="index.html#about">History and Profile</a><a href="index.html#about">Vision, Mission and Core Values</a><a href="index.html#about">Mandate</a><a href="index.html#about">Organization Structure</a><a href="index.html#contact">Contact Us</a><a href="index.html#about">Citizen's Charter</a><a href="index.html#about">Data Privacy Notice</a>
+      </div>
+    </div>
+    <a href="index.html#programs">Programs &amp; Projects</a>
+    <a href="index.html#data">School Data</a>
+    <div class="nav-dropdown">
+      <button type="button" class="nav-drop-toggle" aria-expanded="false">Resources <span class="drop-arrow">▼</span></button>
+      <div class="nav-dropdown-menu">
+        <a href="school-memo.html">School Memo</a><a href="index.html#office-memo">Office Memo</a><a href="index.html#advisories">Advisories</a><a href="school-forms.html">School Forms &amp; Templates</a><a href="index.html#dts">Document Tracking System</a>
+      </div>
+    </div>
+    <a href="index.html#news">News</a><a href="index.html#calendar">Calendar</a><a href="index.html#gallery">Gallery</a><a href="index.html#contact">Contact</a>
+  </nav>
+</header>
+<main class="forms-page">
+  <div class="forms-wrap">
+    <div class="forms-heading">
+      <span class="forms-kicker">SCHOOL RESOURCES</span>
+      <h1>School Forms &amp; Templates</h1>
+      <p>Access official school forms and document templates of Regino P. Pardilla Elementary School.</p>
+    </div>
+    <section class="forms-panel" aria-label="School forms and templates">
+      <div class="forms-toolbar">
+        <div class="forms-search"><span>⌕</span><input id="formSearch" type="search" placeholder="Search forms and templates..." aria-label="Search forms and templates"></div>
+        <div class="forms-count" id="formsCount">2 internal templates available</div>
+      </div>
+      <div class="forms-categories" role="tablist" aria-label="Form categories">
+        <button class="category-card active" id="internalTab" type="button" role="tab" aria-selected="true" aria-controls="internalPanel">
+          <span class="category-icon">▣</span><span><strong>Internal Forms</strong><small>Templates for school personnel and internal transactions.</small></span><span class="category-count">2 files</span>
+        </button>
+        <button class="category-card" id="externalTab" type="button" role="tab" aria-selected="false" aria-controls="externalPanel">
+          <span class="category-icon">♧</span><span><strong>External Forms</strong><small>Forms for parents, learners, visitors and stakeholders.</small></span><span class="category-count">Coming soon</span>
+        </button>
+      </div>
+      <div id="internalPanel" role="tabpanel" aria-labelledby="internalTab">
+        <div class="category-title"><div><h2>Official School Templates</h2><p>Editable Microsoft Word templates for official school communications.</p></div></div>
+        <div class="document-grid" id="documentGrid">
+          <article class="document-card" data-search="official school template a4 portrait internal word letterhead">
+            <div class="file-icon">W</div><div class="document-info"><h3>Official School Template – A4 Portrait</h3><p>Official RPPES letterhead and footer in A4 portrait page layout.</p><div class="file-meta"><span>WORD DOCUMENT</span><span>.DOCX</span><span>INTERNAL USE</span></div><a class="download-link" href="RPPES%20A4%20TEMPLATE.docx" download>⇩ Download Template</a></div>
+          </article>
+          <article class="document-card" data-search="official school template a4 landscape internal word letterhead">
+            <div class="file-icon">W</div><div class="document-info"><h3>Official School Template – A4 Landscape</h3><p>Official RPPES letterhead and footer in A4 landscape page layout.</p><div class="file-meta"><span>WORD DOCUMENT</span><span>.DOCX</span><span>INTERNAL USE</span></div><a class="download-link" href="RPPES%20A4%20TEMPLATE%20landscape.docx" download>⇩ Download Template</a></div>
+          </article>
+        </div>
+        <div class="external-empty" id="noSearchResults" style="display:none;margin-top:16px"><div class="empty-icon">⌕</div><h3>No matching templates found</h3><p>Try another keyword.</p></div>
+        <div class="forms-note"><strong>Reminder:</strong> These templates are intended for internal school use. Please retain the official school letterhead and standard formatting when preparing documents.</div>
+      </div>
+      <div id="externalPanel" role="tabpanel" aria-labelledby="externalTab" hidden>
+        <div class="external-empty"><div class="empty-icon">▤</div><h3>External Forms</h3><p>External forms for parents, learners, visitors and other stakeholders will be posted here soon.</p></div>
+      </div>
+    </section>
+  </div>
+</main>
+<footer id="contact">
+  <div class="footer-brand"><img src="assets/school-logo.png" alt="RPPES Logo"><div><b>REGINO P. PARDILLA ELEMENTARY SCHOOL</b><p>Mulanay District I<br>Schools Division Office of Quezon Province</p></div></div>
+  <div class="footer-contact"><b>CONTACT</b><p>Centro II, Brgy. Ajos<br>Mulanay, Quezon</p><p>108919@deped.gov.ph</p></div>
+  <div class="footer-links"><b>QUICK LINKS</b><p><a href="index.html">Home</a><br><a href="school-memo.html">School Memo</a><br><a href="school-forms.html">School Forms &amp; Templates</a></p></div>
+  <div class="footer-bottom">© 2026 Regino P. Pardilla Elementary School • Official School Website</div>
+</footer>
+<script>
+  (function(){
+    const internalTab=document.getElementById('internalTab');
+    const externalTab=document.getElementById('externalTab');
+    const internalPanel=document.getElementById('internalPanel');
+    const externalPanel=document.getElementById('externalPanel');
+    const search=document.getElementById('formSearch');
+    const count=document.getElementById('formsCount');
+    function showTab(which){
+      const isInternal=which==='internal';
+      internalTab.classList.toggle('active',isInternal); externalTab.classList.toggle('active',!isInternal);
+      internalTab.setAttribute('aria-selected',String(isInternal)); externalTab.setAttribute('aria-selected',String(!isInternal));
+      internalPanel.hidden=!isInternal; externalPanel.hidden=isInternal;
+      count.textContent=isInternal?'2 internal templates available':'External forms';
+      if(!isInternal){search.value='';filterDocuments('');}
+    }
+    function filterDocuments(value){
+      const q=value.trim().toLowerCase();let shown=0;
+      document.querySelectorAll('.document-card').forEach(card=>{const match=card.dataset.search.includes(q)||card.innerText.toLowerCase().includes(q);card.style.display=match?'flex':'none';if(match)shown++;});
+      document.getElementById('noSearchResults').style.display=shown?'none':'block';
+      if(internalPanel.hidden===false)count.textContent=shown+' template'+(shown===1?'':'s')+' found';
+    }
+    internalTab.addEventListener('click',()=>showTab('internal'));
+    externalTab.addEventListener('click',()=>showTab('external'));
+    search.addEventListener('input',e=>filterDocuments(e.target.value));
+    function updateClock(){const now=new Date();document.getElementById('time').textContent=now.toLocaleTimeString('en-US');document.getElementById('date').textContent=now.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'2-digit',year:'numeric'});}
+    updateClock();setInterval(updateClock,1000);
+    document.querySelectorAll('.nav-dropdown .nav-drop-toggle').forEach(btn=>btn.addEventListener('click',()=>{const parent=btn.closest('.nav-dropdown');document.querySelectorAll('.nav-dropdown').forEach(d=>{if(d!==parent){d.classList.remove('open');d.querySelector('.nav-drop-toggle').setAttribute('aria-expanded','false');}});parent.classList.toggle('open');btn.setAttribute('aria-expanded',String(parent.classList.contains('open')));}));
+    document.addEventListener('click',e=>{if(!e.target.closest('.nav-dropdown'))document.querySelectorAll('.nav-dropdown').forEach(d=>{d.classList.remove('open');d.querySelector('.nav-drop-toggle').setAttribute('aria-expanded','false');});});
+  })();
+</script>
+</body>
+</html>
