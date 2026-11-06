@@ -115,4 +115,15 @@ body.csm-open{overflow:hidden}.csm-overlay{position:fixed;inset:0;z-index:9999;b
     box-shadow: none;
     border-left: 3px solid #27834f;
   }
+}/* SHOW NAVIGATION DROPDOWNS ON MOUSE HOVER */
+@media (min-width: 901px) {
+  .main-nav .nav-dropdown:hover > .nav-dropdown-menu,
+  .main-nav .nav-dropdown:focus-within > .nav-dropdown-menu {
+    display: block !important;
+  }
+
+  .main-nav .nav-subdropdown:hover > .nav-dropdown-menu,
+  .main-nav .nav-subdropdown:focus-within > .nav-dropdown-menu {
+    display: block !important;
+  }
 }
