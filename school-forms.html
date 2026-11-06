@@ -160,6 +160,14 @@
 @media(max-width:900px){.main-nav .contact-dropdown>.nav-dropdown-menu{position:static;margin:0 0 0 14px;border-left:3px solid #23834f}}
 @media(max-width:700px){.forms-table th,.forms-table td{padding:12px;font-size:14px}}
 
+/* Desktop: reveal the nested Contact Us menu on hover and keyboard focus. */
+@media (min-width: 901px) {
+  .main-nav .nav-dropdown-menu .contact-dropdown:hover > .nav-dropdown-menu,
+  .main-nav .nav-dropdown-menu .contact-dropdown:focus-within > .nav-dropdown-menu {
+    display: block;
+  }
+}
+
 </style>
 </head>
 <body>
