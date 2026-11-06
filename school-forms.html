@@ -199,32 +199,45 @@
     <section class="forms-panel" aria-label="School forms and templates">
       <div class="forms-toolbar">
         <div class="forms-search"><span>⌕</span><input id="formSearch" type="search" placeholder="Search forms and templates..." aria-label="Search forms and templates"></div>
-        <div class="forms-count" id="formsCount">2 internal templates available</div>
+        <div class="forms-count" id="formsCount">2 form folders available</div>
       </div>
       <div class="forms-categories" role="tablist" aria-label="Form categories">
         <button class="category-card active" id="internalTab" type="button" role="tab" aria-selected="true" aria-controls="internalPanel">
-          <span class="category-icon">▣</span><span><strong>Internal Forms</strong><small>Templates for school personnel and internal transactions.</small></span><span class="category-count">2 files</span>
+          <span class="category-icon">▣</span><span><strong>Internal Forms</strong><small>Templates for school personnel and internal transactions.</small></span><span class="category-count">VIEW FOLDER</span>
         </button>
         <button class="category-card" id="externalTab" type="button" role="tab" aria-selected="false" aria-controls="externalPanel">
-          <span class="category-icon">♧</span><span><strong>External Forms</strong><small>Forms for parents, learners, visitors and stakeholders.</small></span><span class="category-count">Coming soon</span>
+          <span class="category-icon">♧</span><span><strong>External Forms</strong><small>Forms for parents, learners, visitors and stakeholders.</small></span><span class="category-count">VIEW FOLDER</span>
         </button>
       </div>
       <div id="categoryPrompt" class="external-empty"><div class="empty-icon">▤</div><h3>Select a Form Category</h3><p>Choose Internal Forms or External Forms above to view available documents.</p></div>
       <div id="internalPanel" role="tabpanel" aria-labelledby="internalTab" hidden>
-        <div class="category-title"><div><h2>Official School Templates</h2><p>Editable Microsoft Word templates for official school communications.</p></div></div>
-        <div class="document-grid" id="documentGrid">
-          <article class="document-card" data-search="official school template a4 portrait internal word letterhead">
-            <div class="file-icon">W</div><div class="document-info"><h3>Official School Template – A4 Portrait</h3><p>Official RPPES letterhead and footer in A4 portrait page layout.</p><div class="file-meta"><span>WORD DOCUMENT</span><span>.DOCX</span><span>INTERNAL USE</span></div><a class="download-link" href="RPPES%20A4%20TEMPLATE.docx" download>⇩ Download Template</a></div>
-          </article>
-          <article class="document-card" data-search="official school template a4 landscape internal word letterhead">
-            <div class="file-icon">W</div><div class="document-info"><h3>Official School Template – A4 Landscape</h3><p>Official RPPES letterhead and footer in A4 landscape page layout.</p><div class="file-meta"><span>WORD DOCUMENT</span><span>.DOCX</span><span>INTERNAL USE</span></div><a class="download-link" href="RPPES%20A4%20TEMPLATE%20landscape.docx" download>⇩ Download Template</a></div>
+        <div class="category-title"><div><h2>Internal Forms</h2><p>Access official forms and templates for authorized school personnel.</p></div></div>
+        <div class="document-grid">
+          <article class="document-card">
+            <div class="file-icon">📁</div>
+            <div class="document-info">
+              <h3>Internal Forms &amp; Templates</h3>
+              <p>View and access the school’s internal forms and document templates stored in Google Drive.</p>
+              <div class="file-meta"><span>GOOGLE DRIVE</span><span>INTERNAL USE</span></div>
+              <a class="download-link" href="https://drive.google.com/drive/folders/1TWfD1uaMdIjDCSEE6OH53tp3_0MXbdA-?usp=sharing" target="_blank" rel="noopener noreferrer">↗ View Folder</a>
+            </div>
           </article>
         </div>
-        <div class="external-empty" id="noSearchResults" style="display:none;margin-top:16px"><div class="empty-icon">⌕</div><h3>No matching templates found</h3><p>Try another keyword.</p></div>
-        <div class="forms-note"><strong>Reminder:</strong> These templates are intended for internal school use. Please retain the official school letterhead and standard formatting when preparing documents.</div>
+        <div class="forms-note"><strong>Reminder:</strong> Access to internal documents is subject to the sharing permissions set by the school in Google Drive.</div>
       </div>
       <div id="externalPanel" role="tabpanel" aria-labelledby="externalTab" hidden>
-        <div class="external-empty"><div class="empty-icon">▤</div><h3>External Forms</h3><p>External forms for parents, learners, visitors and other stakeholders will be posted here soon.</p></div>
+        <div class="category-title"><div><h2>External Forms</h2><p>Access forms intended for parents, learners, visitors and other stakeholders.</p></div></div>
+        <div class="document-grid">
+          <article class="document-card">
+            <div class="file-icon">📁</div>
+            <div class="document-info">
+              <h3>External Forms</h3>
+              <p>View and access public-facing forms and documents stored in Google Drive.</p>
+              <div class="file-meta"><span>GOOGLE DRIVE</span><span>FOR STAKEHOLDERS</span></div>
+              <a class="download-link" href="https://drive.google.com/drive/folders/1H8zNa4XFk_4cSCa4vpcZ79y4I-H_AYLd?usp=sharing" target="_blank" rel="noopener noreferrer">↗ View Folder</a>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
   </div>
@@ -249,19 +262,22 @@
       internalTab.classList.toggle('active',isInternal); externalTab.classList.toggle('active',!isInternal);
       internalTab.setAttribute('aria-selected',String(isInternal)); externalTab.setAttribute('aria-selected',String(!isInternal));
       internalPanel.hidden=!isInternal; externalPanel.hidden=isInternal; categoryPrompt.hidden=true;
-      count.textContent=isInternal?'2 internal templates available':'External forms';
-      if(!isInternal){search.value='';filterDocuments('');}
+      count.textContent=isInternal?'Internal Forms folder':'External Forms folder';
     }
-    function filterDocuments(value){
-      if(internalPanel.hidden)return;
-      const q=value.trim().toLowerCase();let shown=0;
-      document.querySelectorAll('.document-card').forEach(card=>{const match=card.dataset.search.includes(q)||card.innerText.toLowerCase().includes(q);card.style.display=match?'flex':'none';if(match)shown++;});
-      document.getElementById('noSearchResults').style.display=shown?'none':'block';
-      if(internalPanel.hidden===false)count.textContent=shown+' template'+(shown===1?'':'s')+' found';
+    function filterCategories(value){
+      const q=value.trim().toLowerCase();
+      let shown=0;
+      [[internalTab,'internal forms templates school personnel'],[externalTab,'external forms parents learners visitors stakeholders']].forEach(([tab,keywords])=>{
+        const match=keywords.includes(q) || tab.innerText.toLowerCase().includes(q);
+        tab.style.display=match?'flex':'none';
+        if(match)shown++;
+      });
+      count.textContent=shown+' form folder'+(shown===1?'':'s')+' found';
+      if(!q){count.textContent='2 form folders available';}
     }
     internalTab.addEventListener('click',()=>showTab('internal'));
     externalTab.addEventListener('click',()=>showTab('external'));
-    search.addEventListener('input',e=>filterDocuments(e.target.value));
+    search.addEventListener('input',e=>filterCategories(e.target.value));
     function updateClock(){const now=new Date();document.getElementById('time').textContent=now.toLocaleTimeString('en-US');document.getElementById('date').textContent=now.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'2-digit',year:'numeric'});}
     updateClock();setInterval(updateClock,1000);
     document.querySelectorAll('.nav-dropdown .nav-drop-toggle').forEach(btn=>btn.addEventListener('click',()=>{const parent=btn.closest('.nav-dropdown');document.querySelectorAll('.nav-dropdown').forEach(d=>{if(d!==parent){d.classList.remove('open');d.querySelector('.nav-drop-toggle').setAttribute('aria-expanded','false');}});parent.classList.toggle('open');btn.setAttribute('aria-expanded',String(parent.classList.contains('open')));}));
