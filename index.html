@@ -14,7 +14,7 @@
 .nav-dropdown-menu{display:none;position:absolute;top:100%;left:0;min-width:245px;background:#fff;border:1px solid #dbe3ee;box-shadow:0 8px 20px rgba(0,0,0,.14);z-index:9999}
 .nav-dropdown-menu a{display:block!important;padding:12px 16px!important;color:#163a6b!important;background:#fff!important;text-decoration:none;white-space:nowrap;border-bottom:1px solid #eef2f7}
 .nav-dropdown-menu a:hover,.nav-dropdown-menu a:focus{background:#edf5ff!important;color:#0b55a0!important}
-.nav-dropdown.open .nav-dropdown-menu{display:block}
+.nav-dropdown.open > .nav-dropdown-menu{display:block}
 @media(max-width:900px){.nav-dropdown{width:100%}.nav-drop-toggle{width:100%;text-align:left;padding:12px 16px}.nav-dropdown-menu{position:static;width:100%;min-width:0;box-shadow:none}}
 </style>
 
@@ -62,7 +62,9 @@
   box-shadow: 0 8px 20px rgba(0,0,0,.14);
   z-index: 9999;
 }
-.main-nav .nav-dropdown.open .nav-dropdown-menu {
+.main-nav .nav-dropdown.open > .nav-dropdown-menu {
+  display: block;
+}
   display: block;
 }
 .main-nav .nav-dropdown-menu a {
@@ -141,67 +143,60 @@
   </div>
 
   <nav class="main-nav">
-    <a class="active" href="#home">Home</a>
-    <div class="nav-dropdown">
-      <button type="button" class="nav-drop-toggle" aria-expanded="false">About Us <span class="drop-arrow">▾</span></button>
-      <div class="nav-dropdown-menu">
-  <a href="#history-profile">History and Profile</a>
-  <a href="#vision-mission">Vision, Mission and Core Values</a>
-  <a href="#mandate">Mandate</a>
-  <a href="#organization">Organization Structure</a>
-  <a href="#citizens-charter">Citizen's Charter</a>
-  <a href="#data-privacy">Data Privacy Notice</a>
-</div>
-</div>
-    <a href="#programs">Programs &amp; Projects</a>
-    <a href="#data">School Data</a>
-    <div class="nav-dropdown">
+  <a class="active" href="#home">Home</a>
 
-    <button type="button"
-            class="nav-drop-toggle"
-            aria-expanded="false">
-        Resources
-        <span class="drop-arrow">▼</span>
+  <div class="nav-dropdown">
+    <button type="button" class="nav-drop-toggle" aria-expanded="false">
+      About Us <span class="drop-arrow">▼</span>
     </button>
 
     <div class="nav-dropdown-menu">
+      <a href="#history-profile">History and Profile</a>
+      <a href="#vision-mission">Vision, Mission and Core Values</a>
+      <a href="#mandate">Mandate</a>
+      <a href="#organization">Organization Structure</a>
 
-        <a href="school-memo.html">
-            School Memo
-        </a>
-
-        <a href="#office-memo">
-            Office Memo
-        </a>
-
-        <a href="#advisories">
-            Advisories
-        </a>
-
-        <a href="school-forms.html">
-            School Forms &amp; Templates
-        </a>
-
-        <a href="#dts">
-            Document Tracking System
-        </a>
-
-    </div>
-
-</div>
-    <a href="#news">News</a>
-    <a href="#calendar">Calendar</a>
-    <a href="#gallery">Gallery</a>
-    <div class="nav-dropdown contact-dropdown">
-      <button type="button" class="nav-drop-toggle" aria-expanded="false">Contact Us <span class="drop-arrow">▼</span></button>
-      <div class="nav-dropdown-menu">
-        <a href="office-directory.html">Office Directory</a>
-        <a href="location.html">Location</a>
-        <a href="index.html#contact">Feedback and Complaints (CSM)</a>
+      <div class="nav-dropdown nav-subdropdown">
+        <button type="button" class="nav-drop-toggle" aria-expanded="false">
+          Contact Us <span class="drop-arrow">▶</span>
+        </button>
+        <div class="nav-dropdown-menu">
+          <a href="office-directory.html">Office Directory</a>
+          <a href="location.html">Location</a>
+          <a href="#contact">Feedback and Complaints (CSM)</a>
+        </div>
       </div>
+
+      <a href="#citizens-charter">Citizen's Charter</a>
+      <a href="#data-privacy">Data Privacy Notice</a>
     </div>
-    <div class="nav-search"><input type="search" placeholder="Search" aria-label="Search"><button aria-label="Search">⌕</button></div>
-  </nav>
+  </div>
+
+  <a href="#programs">Programs &amp; Projects</a>
+  <a href="#data">School Data</a>
+
+  <div class="nav-dropdown">
+    <button type="button" class="nav-drop-toggle" aria-expanded="false">
+      Resources <span class="drop-arrow">▼</span>
+    </button>
+    <div class="nav-dropdown-menu">
+      <a href="school-memo.html">School Memo</a>
+      <a href="#office-memo">Office Memo</a>
+      <a href="#advisories">Advisories</a>
+      <a href="school-forms.html">School Forms &amp; Templates</a>
+      <a href="#dts">Document Tracking System</a>
+    </div>
+  </div>
+
+  <a href="#news">News</a>
+  <a href="#calendar">Calendar</a>
+  <a href="#gallery">Gallery</a>
+
+  <div class="nav-search">
+    <input type="search" placeholder="Search" aria-label="Search">
+    <button aria-label="Search">⌕</button>
+  </div>
+</nav>
 </header>
 
 <main id="home">
@@ -287,41 +282,57 @@
 <script src="script.js"></script>
 <script>
 (function(){
-  function initDropdowns(){
-    document.querySelectorAll('.main-nav .nav-dropdown').forEach(function(dropdown){
-      var toggle=dropdown.querySelector('.nav-drop-toggle');
-      if(!toggle) return;
-      toggle.addEventListener('click',function(e){
-        e.preventDefault(); e.stopPropagation();
-        document.querySelectorAll('.main-nav .nav-dropdown').forEach(function(other){
-          if(other!==dropdown){
-            other.classList.remove('open');
-            var ot=other.querySelector('.nav-drop-toggle');
-            if(ot) ot.setAttribute('aria-expanded','false');
-          }
-        });
-        var open=dropdown.classList.toggle('open');
-        toggle.setAttribute('aria-expanded',open?'true':'false');
-      });
-      dropdown.querySelectorAll('.nav-dropdown-menu a').forEach(function(link){
-        link.addEventListener('click',function(){
-          dropdown.classList.remove('open');
-          toggle.setAttribute('aria-expanded','false');
-        });
+  function initDropdowns() {
+    document.querySelectorAll('.main-nav .nav-dropdown').forEach(function(dropdown) {
+      var toggle = dropdown.querySelector(':scope > .nav-drop-toggle');
+
+      if (!toggle) return;
+
+      toggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        var parentDropdown = dropdown.parentElement.closest('.nav-dropdown');
+
+        if (!parentDropdown) {
+          document.querySelectorAll('.main-nav > .nav-dropdown').forEach(function(other) {
+            if (other !== dropdown) {
+              other.classList.remove('open');
+              other.querySelector(':scope > .nav-drop-toggle')
+                ?.setAttribute('aria-expanded', 'false');
+            }
+          });
+        }
+
+        var isOpen = dropdown.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', String(isOpen));
+
+        if (!isOpen) {
+          dropdown.querySelectorAll('.nav-dropdown').forEach(function(child) {
+            child.classList.remove('open');
+            child.querySelector(':scope > .nav-drop-toggle')
+              ?.setAttribute('aria-expanded', 'false');
+          });
+        }
       });
     });
-    document.addEventListener('click',function(e){
-      if(!e.target.closest('.main-nav .nav-dropdown')){
-        document.querySelectorAll('.main-nav .nav-dropdown').forEach(function(dropdown){
-          dropdown.classList.remove('open');
-          var t=dropdown.querySelector('.nav-drop-toggle');
-          if(t) t.setAttribute('aria-expanded','false');
+
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.main-nav')) {
+        document.querySelectorAll('.main-nav .nav-dropdown').forEach(function(item) {
+          item.classList.remove('open');
+          item.querySelector(':scope > .nav-drop-toggle')
+            ?.setAttribute('aria-expanded', 'false');
         });
       }
     });
   }
-  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',initDropdowns);
-  else initDropdowns();
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initDropdowns);
+  } else {
+    initDropdowns();
+  }
 })();
 </script>
 </body>
