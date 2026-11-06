@@ -160,11 +160,33 @@
 @media(max-width:900px){.main-nav .contact-dropdown>.nav-dropdown-menu{position:static;margin:0 0 0 14px;border-left:3px solid #23834f}}
 @media(max-width:700px){.forms-table th,.forms-table td{padding:12px;font-size:14px}}
 
-/* Desktop: reveal the nested Contact Us menu on hover and keyboard focus. */
+/* Reliable nested Contact Us hover/focus behavior on desktop.
+   Keep the submenu attached to its parent so the pointer does not cross a gap. */
 @media (min-width: 901px) {
-  .main-nav .nav-dropdown-menu .contact-dropdown:hover > .nav-dropdown-menu,
-  .main-nav .nav-dropdown-menu .contact-dropdown:focus-within > .nav-dropdown-menu {
-    display: block;
+  .main-nav .nav-dropdown .nav-dropdown-menu .contact-dropdown {
+    position: relative !important;
+    overflow: visible !important;
+  }
+  .main-nav .nav-dropdown .nav-dropdown-menu .contact-dropdown > .nav-dropdown-menu,
+  .main-nav .nav-dropdown .nav-dropdown-menu .contact-dropdown:hover > .nav-dropdown-menu,
+  .main-nav .nav-dropdown .nav-dropdown-menu .contact-dropdown:focus-within > .nav-dropdown-menu,
+  .main-nav .nav-dropdown .nav-dropdown-menu .contact-dropdown.open > .nav-dropdown-menu {
+    display: block !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: calc(100% - 1px) !important;
+    margin: 0 !important;
+    min-width: 245px !important;
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 10001 !important;
+  }
+  .main-nav .nav-dropdown .nav-dropdown-menu .contact-dropdown:not(:hover):not(:focus-within):not(.open) > .nav-dropdown-menu {
+    display: none !important;
+  }
+  .main-nav .nav-dropdown-menu {
+    overflow: visible !important;
   }
 }
 
