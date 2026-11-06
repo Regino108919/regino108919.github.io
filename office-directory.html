@@ -8,7 +8,26 @@
 .directory-search{display:flex;gap:12px;margin-bottom:24px}.directory-search input{flex:1;min-width:0;padding:14px 16px;border:1px solid #cbded1;border-radius:8px;font:inherit}.directory-search button{background:#187844;color:#fff;border:0;border-radius:8px;padding:0 28px;font-weight:700}
 .directory-count{margin:10px 0;color:#365d45}.directory-table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;min-width:720px}th{background:#175f37;color:#fff;padding:15px 12px;text-align:center}td{border:1px solid #cbd8ce;padding:16px 14px;color:#263c2e}tbody tr:nth-child(even){background:#f3f8f4}.directory-note{margin-top:20px;color:#647b6c;font-size:13px}
 @media(max-width:650px){.directory-page{padding:0 12px 40px}.directory-card{padding:18px}.directory-page h1{font-size:27px}.directory-search{flex-direction:column}.directory-search button{padding:13px}}
-</style></head><body><header>
+</style><style>
+/* SHARED MASTER NAVIGATION — authoritative rules for all pages */
+.main-nav{position:relative!important;z-index:1001!important;display:flex!important;align-items:stretch!important;justify-content:center!important;flex-wrap:wrap!important;overflow:visible!important;white-space:normal!important;min-height:49px;background:#fff;border-bottom:1px solid #dce9df}
+.main-nav>.nav-dropdown{position:relative!important;display:flex!important;align-items:stretch!important}
+.main-nav>.nav-dropdown>.nav-drop-toggle,.main-nav>a{display:flex;align-items:center;justify-content:center;min-height:49px;padding:14px 11px!important;border:0;border-right:1px solid #e8efe9;background:#fff;color:#174b32!important;font:600 13px Arial,Helvetica,sans-serif!important;text-decoration:none;white-space:nowrap;cursor:pointer}
+.main-nav>.nav-dropdown>.nav-drop-toggle:hover,.main-nav>a:hover,.main-nav>.nav-dropdown.open>.nav-drop-toggle{background:#eaf5ee!important;color:#176b3a!important}
+.main-nav .nav-dropdown-menu{display:none!important;position:absolute!important;top:100%!important;left:0!important;min-width:245px;background:#fff;border:1px solid #dce9df;box-shadow:0 8px 20px rgba(0,0,0,.14);z-index:10020;padding:0;margin:0}
+.main-nav>.nav-dropdown.open>.nav-dropdown-menu,.main-nav>.nav-dropdown:hover>.nav-dropdown-menu,.main-nav>.nav-dropdown:focus-within>.nav-dropdown-menu{display:block!important}
+.main-nav .nav-dropdown-menu>a,.main-nav .nav-dropdown-menu>.nav-subdropdown>.nav-drop-toggle{display:flex!important;width:100%;box-sizing:border-box;padding:12px 16px!important;justify-content:space-between;text-align:left;color:#174b32!important;background:#fff!important;font:500 13px Arial,Helvetica,sans-serif!important;border:0;border-bottom:1px solid #eef2ef;text-decoration:none;white-space:normal;min-height:0}
+.main-nav .nav-dropdown-menu>a:hover,.main-nav .nav-dropdown-menu>.nav-subdropdown>.nav-drop-toggle:hover{background:#eaf5ee!important;color:#176b3a!important}
+.main-nav .nav-subdropdown{position:relative;display:block}
+.main-nav .nav-subdropdown>.nav-dropdown-menu{display:none!important;position:absolute!important;top:0!important;left:100%!important;min-width:245px}
+.main-nav .nav-subdropdown.open>.nav-dropdown-menu,.main-nav .nav-subdropdown:hover>.nav-dropdown-menu,.main-nav .nav-subdropdown:focus-within>.nav-dropdown-menu{display:block!important}
+.main-nav .nav-search{display:flex;align-items:center;margin-left:6px;padding:6px 8px;min-width:150px}
+.main-nav .nav-search input{width:112px;height:34px;border:1px solid #d6e3d9;border-radius:4px 0 0 4px;padding:0 9px}
+.main-nav .nav-search button{height:34px;width:36px;border:1px solid #d6e3d9;border-left:0;border-radius:0 4px 4px 0;background:#f3f8f4;color:#174b32;cursor:pointer}
+@media(max-width:900px){.main-nav{justify-content:flex-start!important;gap:0}.main-nav>.nav-dropdown>.nav-drop-toggle,.main-nav>a{padding:12px 9px!important;font-size:12px!important}.main-nav .nav-dropdown-menu{position:absolute!important;top:100%!important;left:0!important}.main-nav .nav-subdropdown>.nav-dropdown-menu{position:static!important;left:auto!important;top:auto!important;min-width:0!important;width:100%;box-shadow:none;border-left:3px solid #27834f}.main-nav .nav-search{display:none}}
+
+</style>
+</head><body><header>
   <div class="institutional-head">
     <div class="head-logos left-logos">
       <img class="deped" src="assets/deped-logo.png" alt="Department of Education">
@@ -28,61 +47,16 @@
       <div class="clock-box"><span id="time">00:00:00 AM</span><small id="date">Monday, September 21, 2026</small></div>
     </div>
   </div>
- 
-<nav class="main-nav">
-  <a href="index.html#home">Home</a>
-
-  <div class="nav-dropdown">
-    <button type="button" class="nav-drop-toggle" aria-expanded="false">
-      About Us <span class="drop-arrow">▼</span>
-    </button>
-
-    <div class="nav-dropdown-menu">
-      <a href="index.html#history-profile">History and Profile</a>
-      <a href="index.html#vision-mission">Vision, Mission and Core Values</a>
-      <a href="index.html#mandate">Mandate</a>
-      <a href="index.html#organization">Organization Structure</a>
-
-      <div class="nav-dropdown nav-subdropdown">
-        <button type="button" class="nav-drop-toggle" aria-expanded="false">
-          Contact Us <span class="drop-arrow">▶</span>
-        </button>
-        <div class="nav-dropdown-menu">
-          <a href="office-directory.html">Office Directory</a>
-          <a href="location.html">Location</a>
-          <a href="index.html#contact">Feedback and Complaints (CSM)</a>
-        </div>
-      </div>
-
-      <a href="index.html#citizens-charter">Citizen's Charter</a>
-      <a href="index.html#data-privacy">Data Privacy Notice</a>
-    </div>
-  </div>
-
-  <a href="index.html#programs">Programs &amp; Projects</a>
-  <a href="index.html#data">School Data</a>
-
-  <div class="nav-dropdown">
-    <button type="button" class="nav-drop-toggle" aria-expanded="false">
-      Resources <span class="drop-arrow">▼</span>
-    </button>
-    <div class="nav-dropdown-menu">
-      <a href="school-memo.html">School Memo</a>
-      <a href="index.html#office-memo">Office Memo</a>
-      <a href="index.html#advisories">Advisories</a>
-      <a href="school-forms.html">School Forms &amp; Templates</a>
-      <a href="index.html#dts">Document Tracking System</a>
-    </div>
-  </div>
-
-  <a href="index.html#news">News</a>
-  <a href="index.html#calendar">Calendar</a>
-  <a href="index.html#gallery">Gallery</a>
-
-  <div class="nav-search">
-    <input type="search" placeholder="Search" aria-label="Search">
-    <button type="button" aria-label="Search">⌕</button>
-  </div>
+  <nav class="main-nav" aria-label="Main navigation">
+<a href="index.html">Home</a>
+<div class="nav-dropdown"><button type="button" class="nav-drop-toggle" aria-expanded="false">About Us <span class="drop-arrow">▼</span></button><div class="nav-dropdown-menu">
+<a href="index.html#about">History and Profile</a><a href="index.html#about">Vision, Mission and Core Values</a><a href="index.html#about">Mandate</a><a href="index.html#organization">Organization Structure</a>
+<div class="nav-subdropdown"><button type="button" class="nav-drop-toggle" aria-expanded="false">Contact Us <span class="drop-arrow">▶</span></button><div class="nav-dropdown-menu"><a href="office-directory.html">Office Directory</a><a href="location.html">Location</a><a href="index.html#contact">Feedback and Complaints (CSM)</a></div></div>
+<a href="index.html#citizens-charter">Citizen's Charter</a><a href="index.html#data-privacy">Data Privacy Notice</a></div></div>
+<a href="index.html#programs">Programs &amp; Projects</a><a href="index.html#data">School Data</a>
+<div class="nav-dropdown"><button type="button" class="nav-drop-toggle" aria-expanded="false">Resources <span class="drop-arrow">▼</span></button><div class="nav-dropdown-menu"><a href="school-memo.html">School Memo</a><a href="index.html#office-memo">Office Memo</a><a href="index.html#advisories">Advisories</a><a href="school-forms.html">School Forms &amp; Templates</a><a href="index.html#dts">Document Tracking System</a></div></div>
+<a href="index.html#news">News</a><a href="index.html#calendar">Calendar</a><a href="index.html#gallery">Gallery</a>
+<div class="nav-search"><input type="search" placeholder="Search" aria-label="Search"><button type="button" aria-label="Search">⌕</button></div>
 </nav>
 </header>
 <main class="directory-page"><section class="directory-card"><h1>▦ Official School Directory</h1><p class="directory-sub">Official contact information of Regino P. Pardilla Elementary School.</p>
@@ -93,45 +67,4 @@
 <script>
 function filterDirectory(){const q=document.getElementById('directorySearch').value.toLowerCase();const row=document.querySelector('#directoryBody tr');const match=row.innerText.toLowerCase().includes(q);row.style.display=match?'':'none';document.getElementById('recordCount').textContent=match?'1':'0';}
 document.getElementById('directorySearch').addEventListener('input',filterDirectory);
-function updateClock(){const n=new Date();const t=document.getElementById('time'),d=document.getElementById('date');if(t)t.textContent=n.toLocaleTimeString('en-US');if(d)d.textContent=n.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'2-digit',year:'numeric'});}updateClock();setInterval(updateClock,1000);
-
-document.querySelectorAll('.main-nav .nav-drop-toggle').forEach(btn => {
-  btn.addEventListener('click', e => {
-    e.stopPropagation();
-
-    const dropdown = btn.closest('.nav-dropdown');
-    const parentMenu = dropdown.parentElement.closest('.nav-dropdown');
-
-    if (parentMenu) {
-      const siblings = Array.from(parentMenu.querySelectorAll(':scope > .nav-dropdown'));
-      siblings.forEach(item => {
-        if (item !== dropdown) {
-          item.classList.remove('open');
-          const toggle = item.querySelector(':scope > .nav-drop-toggle');
-          if (toggle) toggle.setAttribute('aria-expanded', 'false');
-        }
-      });
-    } else {
-      document.querySelectorAll('.main-nav > .nav-dropdown').forEach(item => {
-        if (item !== dropdown) {
-          item.classList.remove('open');
-          item.querySelector('.nav-drop-toggle')?.setAttribute('aria-expanded', 'false');
-        }
-      });
-    }
-
-    const isOpen = dropdown.classList.toggle('open');
-    btn.setAttribute('aria-expanded', String(isOpen));
-  });
-});
-
-document.addEventListener('click', e => {
-  if (!e.target.closest('.main-nav')) {
-    document.querySelectorAll('.main-nav .nav-dropdown').forEach(item => {
-      item.classList.remove('open');
-      item.querySelector('.nav-drop-toggle')?.setAttribute('aria-expanded', 'false');
-    });
-  }
-});
-
-</script></body></html>
+</script><script src="script.js"></script></body></html>

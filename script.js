@@ -78,4 +78,35 @@ document.addEventListener("DOMContentLoaded", function () {
   document.addEventListener("keydown", function(e) {
     if (e.key === "Escape") closeCsm();
   });
+
+  // Shared navigation: parent and nested menus stay independent.
+  const nav = document.querySelector(".main-nav");
+  if (nav) {
+    const dropdowns = Array.from(nav.querySelectorAll(".nav-dropdown, .nav-subdropdown"));
+    function setOpen(item, open) {
+      item.classList.toggle("open", open);
+      const button = item.querySelector(":scope > .nav-drop-toggle");
+      if (button) button.setAttribute("aria-expanded", String(open));
+      if (!open) item.querySelectorAll(".nav-subdropdown.open").forEach(child => setOpen(child, false));
+    }
+    nav.addEventListener("click", function(e) {
+      const button = e.target.closest(".nav-drop-toggle");
+      if (!button || !nav.contains(button)) return;
+      e.preventDefault(); e.stopPropagation();
+      const item = button.closest(".nav-dropdown, .nav-subdropdown");
+      const willOpen = !item.classList.contains("open");
+      const siblings = Array.from(item.parentElement.children).filter(el => el !== item && el.matches(".nav-dropdown, .nav-subdropdown"));
+      siblings.forEach(sibling => setOpen(sibling, false));
+      setOpen(item, willOpen);
+    });
+    document.addEventListener("click", function(e) {
+      if (!nav.contains(e.target)) dropdowns.forEach(item => setOpen(item, false));
+    });
+    document.addEventListener("keydown", function(e) {
+      if (e.key === "Escape") dropdowns.forEach(item => setOpen(item, false));
+    });
+    nav.querySelectorAll(".nav-dropdown-menu a").forEach(link => link.addEventListener("click", function() {
+      dropdowns.forEach(item => setOpen(item, false));
+    }));
+  }
 });
