@@ -140,6 +140,26 @@
 .contact-dropdown>.nav-dropdown-menu a{white-space:normal}
 @media(min-width:901px){.contact-dropdown>.nav-dropdown-menu{top:0;left:100%;margin-left:1px}}
 @media(max-width:900px){.contact-dropdown>.nav-dropdown-menu{position:static;margin:0 0 0 14px;border-left:3px solid #23834f}}
+
+/* School Forms table: green theme, matching the existing site palette */
+.forms-table-wrap{width:100%;overflow-x:auto;margin-top:18px}
+.forms-table{width:100%;border-collapse:collapse;background:#fff;min-width:460px}
+.forms-table th{background:#176b3a;color:#fff;text-align:center;padding:15px 16px;font-size:15px;font-weight:700}
+.forms-table td{border:1px solid #dce9df;padding:16px;font-size:15px;color:#244536}
+.forms-table td:first-child{width:78%}
+.forms-table td:last-child{text-align:center;width:22%}
+.forms-table tbody tr:hover{background:#f3f8f4}
+.forms-table .download-link{background:#176b3a;color:#fff!important;display:inline-flex;justify-content:center;min-width:86px}
+.forms-table .download-link:hover{background:#12452d}
+/* Nested Contact Us stays inside About Us; it is not a top-level navigation item. */
+.main-nav .contact-dropdown{position:relative;display:block;height:auto}
+.main-nav .contact-dropdown>.nav-drop-toggle{width:100%;text-align:left;padding:12px 16px!important;min-height:0;border-right:0}
+.main-nav .contact-dropdown>.nav-dropdown-menu{top:0;left:100%;margin-left:1px}
+.main-nav .nav-dropdown-menu .contact-dropdown>.nav-dropdown-menu{display:none}
+.main-nav .nav-dropdown-menu .contact-dropdown.open>.nav-dropdown-menu{display:block}
+@media(max-width:900px){.main-nav .contact-dropdown>.nav-dropdown-menu{position:static;margin:0 0 0 14px;border-left:3px solid #23834f}}
+@media(max-width:700px){.forms-table th,.forms-table td{padding:12px;font-size:14px}}
+
 </style>
 </head>
 <body>
@@ -168,7 +188,20 @@
     <div class="nav-dropdown">
       <button type="button" class="nav-drop-toggle" aria-expanded="false">About Us <span class="drop-arrow">▼</span></button>
       <div class="nav-dropdown-menu">
-        <a href="index.html#about">History and Profile</a><a href="index.html#about">Vision, Mission and Core Values</a><a href="index.html#about">Mandate</a><a href="index.html#about">Organization Structure</a><a href="index.html#contact">Contact Us</a><a href="index.html#about">Citizen's Charter</a><a href="index.html#about">Data Privacy Notice</a>
+        <a href="index.html#about">History and Profile</a>
+        <a href="index.html#about">Vision, Mission and Core Values</a>
+        <a href="index.html#about">Mandate</a>
+        <a href="index.html#about">Organization Structure</a>
+        <div class="nav-dropdown contact-dropdown">
+          <button type="button" class="nav-drop-toggle" aria-expanded="false">Contact Us <span class="drop-arrow">▶</span></button>
+          <div class="nav-dropdown-menu">
+            <a href="office-directory.html">Office Directory</a>
+            <a href="location.html">Location</a>
+            <a href="index.html#contact">Feedback and Complaints (CSM)</a>
+          </div>
+        </div>
+        <a href="index.html#about">Citizen's Charter</a>
+        <a href="index.html#about">Data Privacy Notice</a>
       </div>
     </div>
     <a href="index.html#programs">Programs &amp; Projects</a>
@@ -176,17 +209,16 @@
     <div class="nav-dropdown">
       <button type="button" class="nav-drop-toggle" aria-expanded="false">Resources <span class="drop-arrow">▼</span></button>
       <div class="nav-dropdown-menu">
-        <a href="school-memo.html">School Memo</a><a href="index.html#office-memo">Office Memo</a><a href="index.html#advisories">Advisories</a><a href="school-forms.html">School Forms &amp; Templates</a><a href="index.html#dts">Document Tracking System</a>
+        <a href="school-memo.html">School Memo</a>
+        <a href="index.html#office-memo">Office Memo</a>
+        <a href="index.html#advisories">Advisories</a>
+        <a href="school-forms.html">School Forms &amp; Templates</a>
+        <a href="index.html#dts">Document Tracking System</a>
       </div>
     </div>
-    <a href="index.html#news">News</a><a href="index.html#calendar">Calendar</a><a href="index.html#gallery">Gallery</a><div class="nav-dropdown contact-dropdown">
-      <button type="button" class="nav-drop-toggle" aria-expanded="false">Contact Us <span class="drop-arrow">▼</span></button>
-      <div class="nav-dropdown-menu">
-        <a href="office-directory.html">Office Directory</a>
-        <a href="location.html">Location</a>
-        <a href="index.html#contact">Feedback and Complaints (CSM)</a>
-      </div>
-    </div>
+    <a href="index.html#news">News</a>
+    <a href="index.html#calendar">Calendar</a>
+    <a href="index.html#gallery">Gallery</a>
   </nav>
 </header>
 <main class="forms-page">
@@ -201,43 +233,23 @@
         <div class="forms-search"><span>⌕</span><input id="formSearch" type="search" placeholder="Search forms and templates..." aria-label="Search forms and templates"></div>
         <div class="forms-count" id="formsCount">2 form folders available</div>
       </div>
-      <div class="forms-categories" role="tablist" aria-label="Form categories">
-        <button class="category-card active" id="internalTab" type="button" role="tab" aria-selected="true" aria-controls="internalPanel">
-          <span class="category-icon">▣</span><span><strong>Internal Forms</strong><small>Templates for school personnel and internal transactions.</small></span><span class="category-count">VIEW FOLDER</span>
-        </button>
-        <button class="category-card" id="externalTab" type="button" role="tab" aria-selected="false" aria-controls="externalPanel">
-          <span class="category-icon">♧</span><span><strong>External Forms</strong><small>Forms for parents, learners, visitors and stakeholders.</small></span><span class="category-count">VIEW FOLDER</span>
-        </button>
+      <div class="forms-table-wrap">
+        <table class="forms-table">
+          <thead><tr><th scope="col">Description</th><th scope="col">Files</th></tr></thead>
+          <tbody id="formsTableBody">
+            <tr class="form-row" data-search="internal forms school personnel internal templates school documents">
+              <td>Internal Forms</td>
+              <td><a class="download-link" href="https://drive.google.com/drive/folders/1TWfD1uaMdIjDCSEE6OH53tp3_0MXbdA-?usp=sharing" target="_blank" rel="noopener noreferrer">↗ View</a></td>
+            </tr>
+            <tr class="form-row" data-search="external forms parents learners visitors stakeholders public forms">
+              <td>External Forms</td>
+              <td><a class="download-link" href="https://drive.google.com/drive/folders/1H8zNa4XFk_4cSCa4vpcZ79y4I-H_AYLd?usp=sharing" target="_blank" rel="noopener noreferrer">↗ View</a></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-      <div id="categoryPrompt" class="external-empty"><div class="empty-icon">▤</div><h3>Select a Form Category</h3><p>Choose Internal Forms or External Forms above to view available documents.</p></div>
-      <div id="internalPanel" role="tabpanel" aria-labelledby="internalTab" hidden>
-        <div class="category-title"><div><h2>Internal Forms</h2><p>Access official forms and templates for authorized school personnel.</p></div></div>
-        <div class="document-grid">
-          <article class="document-card">
-            <div class="file-icon">📁</div>
-            <div class="document-info">
-              <h3>Internal Forms &amp; Templates</h3>
-              <p>View and access the school’s internal forms and document templates stored in Google Drive.</p>
-              <div class="file-meta"><span>GOOGLE DRIVE</span><span>INTERNAL USE</span></div>
-              <a class="download-link" href="https://drive.google.com/drive/folders/1TWfD1uaMdIjDCSEE6OH53tp3_0MXbdA-?usp=sharing" target="_blank" rel="noopener noreferrer">↗ View Folder</a>
-            </div>
-          </article>
-        </div>
-        <div class="forms-note"><strong>Reminder:</strong> Access to internal documents is subject to the sharing permissions set by the school in Google Drive.</div>
-      </div>
-      <div id="externalPanel" role="tabpanel" aria-labelledby="externalTab" hidden>
-        <div class="category-title"><div><h2>External Forms</h2><p>Access forms intended for parents, learners, visitors and other stakeholders.</p></div></div>
-        <div class="document-grid">
-          <article class="document-card">
-            <div class="file-icon">📁</div>
-            <div class="document-info">
-              <h3>External Forms</h3>
-              <p>View and access public-facing forms and documents stored in Google Drive.</p>
-              <div class="file-meta"><span>GOOGLE DRIVE</span><span>FOR STAKEHOLDERS</span></div>
-              <a class="download-link" href="https://drive.google.com/drive/folders/1H8zNa4XFk_4cSCa4vpcZ79y4I-H_AYLd?usp=sharing" target="_blank" rel="noopener noreferrer">↗ View Folder</a>
-            </div>
-          </article>
-        </div>
+      <div class="external-empty" id="noSearchResults" style="display:none;margin-top:16px">
+        <div class="empty-icon">⌕</div><h3>No matching forms found</h3><p>Try another keyword.</p>
       </div>
     </section>
   </div>
@@ -249,40 +261,64 @@
   <div class="footer-bottom">© 2026 Regino P. Pardilla Elementary School • Official School Website</div>
 </footer>
 <script>
-  (function(){
-    const internalTab=document.getElementById('internalTab');
-    const externalTab=document.getElementById('externalTab');
-    const internalPanel=document.getElementById('internalPanel');
-    const externalPanel=document.getElementById('externalPanel');
-    const categoryPrompt=document.getElementById('categoryPrompt');
-    const search=document.getElementById('formSearch');
-    const count=document.getElementById('formsCount');
-    function showTab(which){
-      const isInternal=which==='internal';
-      internalTab.classList.toggle('active',isInternal); externalTab.classList.toggle('active',!isInternal);
-      internalTab.setAttribute('aria-selected',String(isInternal)); externalTab.setAttribute('aria-selected',String(!isInternal));
-      internalPanel.hidden=!isInternal; externalPanel.hidden=isInternal; categoryPrompt.hidden=true;
-      count.textContent=isInternal?'Internal Forms folder':'External Forms folder';
-    }
-    function filterCategories(value){
-      const q=value.trim().toLowerCase();
-      let shown=0;
-      [[internalTab,'internal forms templates school personnel'],[externalTab,'external forms parents learners visitors stakeholders']].forEach(([tab,keywords])=>{
-        const match=keywords.includes(q) || tab.innerText.toLowerCase().includes(q);
-        tab.style.display=match?'flex':'none';
-        if(match)shown++;
+document.addEventListener('DOMContentLoaded', function () {
+  const search = document.getElementById('formSearch');
+  const rows = Array.from(document.querySelectorAll('#formsTableBody .form-row'));
+  const count = document.getElementById('formsCount');
+  const noResults = document.getElementById('noSearchResults');
+  if (search) {
+    search.addEventListener('input', function () {
+      const q = search.value.trim().toLowerCase();
+      let visible = 0;
+      rows.forEach(row => {
+        const match = !q || (row.dataset.search + ' ' + row.innerText).toLowerCase().includes(q);
+        row.hidden = !match;
+        if (match) visible++;
       });
-      count.textContent=shown+' form folder'+(shown===1?'':'s')+' found';
-      if(!q){count.textContent='2 form folders available';}
+      if (count) count.textContent = 'Total Records: ' + visible;
+      if (noResults) noResults.style.display = visible ? 'none' : 'block';
+    });
+  }
+  function updateClock() {
+    const now = new Date();
+    const time = document.getElementById('time');
+    const date = document.getElementById('date');
+    if (time) time.textContent = now.toLocaleTimeString('en-US', {hour:'2-digit', minute:'2-digit', second:'2-digit'});
+    if (date) date.textContent = now.toLocaleDateString('en-US', {weekday:'short', month:'short', day:'2-digit', year:'numeric'});
+  }
+  updateClock();
+  setInterval(updateClock, 1000);
+
+  const dropdowns = Array.from(document.querySelectorAll('.main-nav .nav-dropdown'));
+  dropdowns.forEach(dropdown => {
+    const button = dropdown.querySelector(':scope > .nav-drop-toggle');
+    if (!button) return;
+    button.addEventListener('click', function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      const opening = !dropdown.classList.contains('open');
+      // Close unrelated dropdowns, but keep any parent dropdown of this nested item open.
+      dropdowns.forEach(other => {
+        if (other !== dropdown && !other.contains(dropdown) && !dropdown.contains(other)) {
+          other.classList.remove('open');
+          const otherButton = other.querySelector(':scope > .nav-drop-toggle');
+          if (otherButton) otherButton.setAttribute('aria-expanded', 'false');
+        }
+      });
+      dropdown.classList.toggle('open', opening);
+      button.setAttribute('aria-expanded', String(opening));
+    });
+  });
+  document.addEventListener('click', function (event) {
+    if (!event.target.closest('.main-nav .nav-dropdown')) {
+      dropdowns.forEach(dropdown => {
+        dropdown.classList.remove('open');
+        const button = dropdown.querySelector(':scope > .nav-drop-toggle');
+        if (button) button.setAttribute('aria-expanded', 'false');
+      });
     }
-    internalTab.addEventListener('click',()=>showTab('internal'));
-    externalTab.addEventListener('click',()=>showTab('external'));
-    search.addEventListener('input',e=>filterCategories(e.target.value));
-    function updateClock(){const now=new Date();document.getElementById('time').textContent=now.toLocaleTimeString('en-US');document.getElementById('date').textContent=now.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'2-digit',year:'numeric'});}
-    updateClock();setInterval(updateClock,1000);
-    document.querySelectorAll('.nav-dropdown .nav-drop-toggle').forEach(btn=>btn.addEventListener('click',()=>{const parent=btn.closest('.nav-dropdown');document.querySelectorAll('.nav-dropdown').forEach(d=>{if(d!==parent){d.classList.remove('open');d.querySelector('.nav-drop-toggle').setAttribute('aria-expanded','false');}});parent.classList.toggle('open');btn.setAttribute('aria-expanded',String(parent.classList.contains('open')));}));
-    document.addEventListener('click',e=>{if(!e.target.closest('.nav-dropdown'))document.querySelectorAll('.nav-dropdown').forEach(d=>{d.classList.remove('open');d.querySelector('.nav-drop-toggle').setAttribute('aria-expanded','false');});});
-  })();
+  });
+});
 </script>
 </body>
 </html>
